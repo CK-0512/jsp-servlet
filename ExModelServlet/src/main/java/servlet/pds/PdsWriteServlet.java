@@ -86,7 +86,7 @@ public class PdsWriteServlet extends HttpServlet {
 		pds.setPass(pass);
 		pds.setFilename(filename);
 		
-		int row = dao.pdsWrite(pds);
+		int row = dao.insertPds(pds);
 		
 		request.setAttribute("row", row);
 		RequestDispatcher rd = request.getRequestDispatcher("pds_write_pro.jsp");

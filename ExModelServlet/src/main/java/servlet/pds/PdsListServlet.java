@@ -34,7 +34,7 @@ public class PdsListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PdsDAO dao = PdsDAO.getInstance();
 		
-		List<PdsDTO> list = dao.pdsList();
+		List<PdsDTO> list = dao.listPds();
 		
 		request.setAttribute("list", list);
 	
