@@ -68,7 +68,9 @@
       <td><font size="2">&nbsp;</font></td>
       <td><input type="button" value="수정하기" onClick="check()">&nbsp;
       <input type="button" value="돌아가기" onClick="back()"></td></tr>
-    </table></td>
+    </table>
+    </form>
+    </td>
   </tr>
   </table>
 </body>

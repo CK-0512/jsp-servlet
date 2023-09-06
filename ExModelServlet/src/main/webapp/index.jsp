@@ -12,6 +12,7 @@
 	<h3><a href="/Guest/guest_list">방명록 바로가기</a></h3>
 	<h3><a href="/Board/board_list.do">게시판 바로가기</a></h3>
 	<h3><a href="/Member/userinfo_list.do">회원관리 바로가기</a></h3>
-	<h3><a href="/Pds/pds_list.do">파일어로드 바로가기</a></h3>
+	<h3><a href="/Pds/pds_list.do">자료실 바로가기</a></h3>
+	<h3><a href="/BoardReply/board_list.do">답변형 게시판 바로가기</a></h3>
 </body>
 </html>
