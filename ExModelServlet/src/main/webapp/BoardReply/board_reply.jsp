@@ -7,7 +7,7 @@
 	function send(){
 		
 		
-		alert("글을 등록합니다.");
+		alert("댓글을 등록합니다.");
 		board.submit();
 	}
 

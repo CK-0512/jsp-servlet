@@ -100,6 +100,125 @@ public class BoardReplyDAO {
 		return list;
 	}
 
+	// 전체목록- 검색기능추가
+	public List<BoardReplyDTO> boardList(String search, String key) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+	
+		List<BoardReplyDTO> list = new ArrayList<>();// 리턴타입
+		String query="select * from tbl_boardreply where " + search + " like ? order by parent desc, depth asc";
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + key + "%");
+			rs = pstmt.executeQuery();
+			BoardReplyDTO board = null;
+			while(rs.next()) {
+				board = new BoardReplyDTO();
+				board.setIdx(rs.getInt("idx"));
+				board.setName(rs.getString("name"));
+				board.setEmail(rs.getString("email"));
+				board.setSubject(rs.getString("subject"));
+				board.setRegdate(rs.getString("regdate"));
+				board.setReadcnt(rs.getInt("readcnt"));
+				board.setIndent(rs.getInt("indent"));
+			
+				list.add(board);
+			}
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	//게시글 전체 목록(검색 X, 페이지 O)
+	public List<BoardReplyDTO> boardList(int pagestart, int endpage) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		//리턴타입
+		List<BoardReplyDTO> list = new ArrayList<>();
+		//쿼리
+		String query="select X.* from (select rownum as rnum, A.* from " + 
+			     " (select * from tbl_boardreply order by parent desc, depth asc) A " + 
+			     "	where rownum <= ?) X where X.rnum > ?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			BoardReplyDTO board = null;
+			while(rs.next()) {
+				board = new BoardReplyDTO();
+				board.setIdx(rs.getInt("idx"));
+				board.setName(rs.getString("name"));
+				board.setEmail(rs.getString("email"));
+				board.setSubject(rs.getString("subject"));
+				board.setRegdate(rs.getString("regdate"));
+				board.setReadcnt(rs.getInt("readcnt"));
+				board.setIndent(rs.getInt("indent"));
+			
+				list.add(board);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return list;
+	}
+
+	//게시글 전체 목록(검색 O, 페이지 O)
+	public List<BoardReplyDTO> boardList(String search, String key, int pagestart, int endpage) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		//리턴타입
+		List<BoardReplyDTO> list = new ArrayList<>();
+		//쿼리
+		String query="select X.* from (select rownum as rnum, A.* from " + 
+				"(select * from tbl_board order by parent desc, depth asc) A " + 
+				" where " + search + " like ? and rownum <= ?) X where " + search + " like ?  and X.rnum >= ?";
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + key + "%");
+			pstmt.setInt(2, endpage);
+			pstmt.setString(3, "%" + key + "%");
+			pstmt.setInt(4, pagestart);
+
+			BoardReplyDTO board = null;
+			while(rs.next()) {
+				board = new BoardReplyDTO();
+				board.setIdx(rs.getInt("idx"));
+				board.setName(rs.getString("name"));
+				board.setEmail(rs.getString("email"));
+				board.setSubject(rs.getString("subject"));
+				board.setRegdate(rs.getString("regdate"));
+				board.setReadcnt(rs.getInt("readcnt"));
+				board.setIndent(rs.getInt("indent"));
+			
+				list.add(board);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return list;
+	}
+	
 	// 뷰
 	public BoardReplyDTO boardSelect(int idx) {
 		Connection conn = null;
@@ -199,4 +318,55 @@ public class BoardReplyDAO {
 		}
 		return row;
 	}
+
+	// 답변글 유무 체크 
+	public int replySearch(int idx) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+
+		String query = "select count(realparent) as sNum from tbl_boardreply where realparent = ?";
+		int row=0;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, idx);
+
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				row = rs.getInt(1);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt,rs);
+		}
+		return row;
+	}
+
+	// 특정 글 삭제 처리
+	public int boardDelete(int idx, String pass) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+
+		String query="delete from tbl_boardreply where idx = ? and pass = ?";
+		int row=0;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, idx);
+			pstmt.setString(2, pass);
+			row = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt,rs);
+		}
+		return row;
+	}
+
+	
 }
