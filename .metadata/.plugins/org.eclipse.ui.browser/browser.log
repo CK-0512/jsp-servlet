@@ -174,3 +174,30 @@
 8월 30, 2023 11:30:18.415 
 8월 30, 2023 11:30:18.415 
 8월 30, 2023 11:34:34.738 [11184:9620:0830/113434.737:ERROR:interface_endpoint_client.cc(702)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+9월 08, 2023 09:34:50.82 NEW SESSION
+9월 08, 2023 09:34:50.82 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+9월 08, 2023 09:40:43.218 [22556:2756:0908/094043.217:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+9월 08, 2023 09:40:43.219 [22556:2756:0908/094043.219:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+9월 08, 2023 09:40:43.219 [22556:2756:0908/094043.219:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:44:49.270 [22556:2756:0908/094449.269:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+9월 08, 2023 09:44:49.270 [22556:2756:0908/094449.269:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+9월 08, 2023 09:44:49.270 [22556:2756:0908/094449.270:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:44:49.818 [22556:2756:0908/094449.818:ERROR:CONSOLE(1)] "Extension server error: Operation failed: http://localhost:8090/BoardReply/board_modify.do?page=&idx=2 has no execution context", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:45:05.649 [22556:2756:0908/094505.649:ERROR:CONSOLE(1)] "Extension server error: Operation failed: http://localhost:8090/BoardReply/board_modify.do?page=&idx=2 has no execution context", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:45:46.885 [22556:2756:0908/094546.884:ERROR:CONSOLE(1)] "Extension server error: Operation failed: http://localhost:8090/BoardReply/board_modify.do?idx=2 has no execution context", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:46:06.118 [22556:2756:0908/094606.118:ERROR:CONSOLE(1)] "Extension server error: Operation failed: http://localhost:8090/BoardReply/board_modify.do?idx=2 has no execution context", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:46:09.175 [22556:2756:0908/094609.175:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+9월 08, 2023 09:46:09.175 [22556:2756:0908/094609.175:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+9월 08, 2023 09:46:09.176 [22556:2756:0908/094609.175:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:46:10.240 [22556:2756:0908/094610.240:ERROR:CONSOLE(1)] "Cannot find context with specified id", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+9월 08, 2023 09:46:10.241 [22556:2756:0908/094610.240:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: Cannot find context with specified id", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:47:39.235 [22556:2756:0908/094739.234:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+9월 08, 2023 09:47:39.236 [22556:2756:0908/094739.236:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+9월 08, 2023 09:47:39.236 [22556:2756:0908/094739.236:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:49:13.318 [22556:2756:0908/094913.318:ERROR:CONSOLE(1)] "Extension server error: Operation failed: http://localhost:8090/BoardReply/boardreply_list.do?page= has no execution context", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 09:58:33.351 [22556:2756:0908/095833.351:ERROR:CONSOLE(1)] "Cannot find context with specified id", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+9월 08, 2023 09:58:33.351 [22556:2756:0908/095833.351:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: Cannot find context with specified id", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 10:05:52.665 [22556:2756:0908/100552.665:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+9월 08, 2023 10:24:38.866 [22556:2756:0908/102438.865:ERROR:CONSOLE(1)] "Ignoring unauthorized client request from null", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+9월 08, 2023 10:24:38.875 [22556:2756:0908/102438.875:ERROR:CONSOLE(1)] "Ignoring unauthorized client request from null", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)

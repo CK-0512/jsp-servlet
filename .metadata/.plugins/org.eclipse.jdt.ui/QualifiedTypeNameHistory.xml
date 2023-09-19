@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="model.util.DBManager"/>
     <fullyQualifiedTypeName name="model.util.UserSHA256"/>
     <fullyQualifiedTypeName name="java.lang.Class"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
@@ -10,5 +9,14 @@
     <fullyQualifiedTypeName name="model.util.PageIndex"/>
     <fullyQualifiedTypeName name="model.board.BoardDAO"/>
     <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+    <fullyQualifiedTypeName name="model.pds.PdsDAO"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="model.util.DBManager"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="model.boardreply.BoardReplyDAO"/>
+    <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+    <fullyQualifiedTypeName name="javax.naming.Context"/>
+    <fullyQualifiedTypeName name="service.Action"/>
+    <fullyQualifiedTypeName name="service.board.BoardListAction"/>
+    <fullyQualifiedTypeName name="service.board.BoardWriteProAction"/>
 </qualifiedTypeNameHistroy>
