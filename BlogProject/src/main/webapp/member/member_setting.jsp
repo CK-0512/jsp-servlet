@@ -7,7 +7,7 @@
 
 <section>
 	<div class="container mx-auto">
-		<form action="doModify" method="POST">
+		<form action="/Member?cmd=member_modify_pro.do" method="POST">
 			<div class="table-box-type-1">
 				<table class="table">
 					<colgroup>
@@ -44,7 +44,7 @@
 			<div class="mt-2 flex justify-between">
 				<button class="btn btn-accent btn-sm" onclick="history.back();">뒤로가기</button>
 				<div>
-					<a class="btn btn-accent btn-sm mr-2" href="passwordModify">비밀번호변경</a>
+					<a class="btn btn-accent btn-sm mr-2" href="/Member?cmd=member_passModify.do">비밀번호변경</a>
 					<button class="btn btn-accent btn-sm">수정</button>
 				</div>
 			</div>

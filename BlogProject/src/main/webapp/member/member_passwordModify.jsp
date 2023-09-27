@@ -7,7 +7,7 @@
 
 <section>
 	<div class="container mx-auto">
-		<form action="doPasswordModify" method="POST">
+		<form action="/Member?cmd=member_passModify_pro.do" method="POST">
 			<div class="table-box-type-1">
 				<table>
 					<colgroup>

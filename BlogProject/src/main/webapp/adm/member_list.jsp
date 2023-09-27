@@ -93,7 +93,7 @@
 				삭제</button>
 		</div>
 
-		<form action="doDeleteMembers" method="POST"
+		<form action="/Member?cmd=member_delete.do" method="POST"
 			name="do-delete-members-form">
 			<input type="hidden" name="ids" value="" />
 		</form>
@@ -123,7 +123,7 @@
 					value="${page + pageMenuLen <= pagesCnt ? page + pageMenuLen : pagesCnt }" />
 
 				<c:set var="pageBaseUri"
-					value="?searchKeywordType=${searchKeywordType }&searchKeyword=${searchKeyword }" />
+					value="/Member?cmd=member_list&boardId=${board.size() == 1 ? board[0].id : 0}&searchKeywordType=${searchKeywordType }&searchKeyword=${searchKeyword }.do" />
 
 				<c:if test="${page == 1 }">
 					<a class="join-item btn btn-disabled">«</a>

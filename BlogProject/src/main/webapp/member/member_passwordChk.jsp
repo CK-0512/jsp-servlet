@@ -7,7 +7,7 @@
 
 <section>
 	<div class="container mx-auto">
-		<form action="doPasswordChk" method="POST">
+		<form action="/Member?cmd=member_passChk_pro.do" method="POST">
 			<div class="table-box-type-1">
 				<table>
 					<colgroup>

@@ -7,7 +7,7 @@
 
 <section>
 	<div class="container mx-auto">
-		<form action="doFindLoginPw" method="POST">
+		<form action="/Member?cmd=member_findLoginPw_pro.do" method="POST">
 			<div class="table-box-type-1">
 				<table>
 					<colgroup>
@@ -40,8 +40,8 @@
 		<div class="mt-2 flex justify-between">
 			<button class="btn btn-accent btn-sm" onclick="history.back();">뒤로가기</button>
 			<div>
-				<a class="btn btn-accent btn-sm" href="findLoginId">아이디 찾기</a> <a
-					class="btn btn-accent btn-sm" href="login">로그인</a>
+				<a class="btn btn-accent btn-sm" href="/Member?cmd=member_findLoginId.do">아이디 찾기</a> <a
+					class="btn btn-accent btn-sm" href="/Member?cmd=member_login.do">로그인</a>
 			</div>
 		</div>
 	</div>

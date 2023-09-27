@@ -48,8 +48,8 @@
 				<button class="btn btn-accent btn-sm" onclick="history.back();">뒤로가기</button>
 				
 				<c:if test="${article.memberId == rq.getLoginedMemberId() }">
-					<a class="btn btn-accent btn-sm" href="modify?id=${article.id}">수정</a>
-					<a class="btn btn-accent btn-sm" href="doDelete?id=${article.id}" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a>
+					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_modify&id=${article.id}.do">수정</a>
+					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_delete&id=${article.id }.do" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a>
 				</c:if>
 			</div>
 		</div>
@@ -74,7 +74,7 @@
 				originalForm = replyContent.html();
 				
 				let addHtml = `
-					<form action="../reply/doModify" method="POST">
+					<form action="/Reply?cmd=reply_modify_pro.do" method="POST">
 						<input type="hidden" name="id" value="\${data.data1.id}"/>
 						<div class="mt-4 border border-gray-400 rounded-lg text-base p-4">
 							<div class="mb-2"><span>${rq.loginedMember.nickname }</span></div>
@@ -117,7 +117,7 @@
 							    </button>
 							    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-20">
 							        <li><a onclick="replyModify_getForm(${reply.id }, ${status.count });">수정</a></li>
-							        <li><a href="../reply/doDelete?id=${reply.id }" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a></li>
+							        <li><a href="/Reply?cmd=reply_delete_pro&id=${reply.id }.do" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a></li>
 						        </ul>
 						  	</div>
 					  	</c:if>
@@ -129,7 +129,7 @@
 			</c:forEach>
 			
 			<c:if test="${rq.loginedMemberId != 0 }">
-				<form action="../reply/doWrite" method="POST">
+				<form action="/Reply?cmd=reply_write_pro.do" method="POST">
 					<input type="hidden" name="relTypeCode" value="article"/>
 					<input type="hidden" name="relId" value="${article.id }"/>
 					<div class="mt-4 border border-gray-400 rounded-lg text-base p-4">
@@ -140,6 +140,7 @@
 				</form>
 			</c:if>
 		</div>
+		<%@ include file="../common/sidebar.jsp" %>
 	</section>
 
 <%@ include file="../common/foot.jsp" %>

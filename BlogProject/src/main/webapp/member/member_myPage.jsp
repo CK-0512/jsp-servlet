@@ -38,7 +38,7 @@
 			</div>
 			<div class="mt-2 flex justify-between">
 				<button class="btn btn-accent btn-sm" onclick="history.back();">뒤로가기</button>
-				<a class="btn btn-accent btn-sm" href="passwordChk">회원정보수정</a>
+				<a class="btn btn-accent btn-sm" href="/Member?cmd=member_passwordChk.do">회원정보수정</a>
 			</div>
 		</div>
 	<%@ include file="../common/sidebar.jsp" %>
