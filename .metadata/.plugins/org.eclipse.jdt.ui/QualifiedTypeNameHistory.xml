@@ -19,4 +19,15 @@
     <fullyQualifiedTypeName name="service.Action"/>
     <fullyQualifiedTypeName name="service.board.BoardListAction"/>
     <fullyQualifiedTypeName name="service.board.BoardWriteProAction"/>
+    <fullyQualifiedTypeName name="model.notice.NoticeDAO"/>
+    <fullyQualifiedTypeName name="service.member.MemberFindIdAction"/>
+    <fullyQualifiedTypeName name="service.member.MemberFindIdProAction"/>
+    <fullyQualifiedTypeName name="service.member.MemberFindPassAction"/>
+    <fullyQualifiedTypeName name="service.member.MemberFindPassProAction"/>
+    <fullyQualifiedTypeName name="service.member.MemberPassChkAction"/>
+    <fullyQualifiedTypeName name="service.member.MemberPassChkProAction"/>
+    <fullyQualifiedTypeName name="service.member.MemberPassModifyAction"/>
+    <fullyQualifiedTypeName name="service.member.MemberPassModifyProAction"/>
+    <fullyQualifiedTypeName name="service.member.MemberLogoutProAction"/>
+    <fullyQualifiedTypeName name="model.member.MemberDAO"/>
 </qualifiedTypeNameHistroy>

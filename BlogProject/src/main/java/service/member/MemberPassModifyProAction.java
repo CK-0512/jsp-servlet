@@ -1,37 +1,48 @@
 package service.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.article.ArticleDAO;
-import model.article.ArticleDTO;
+import model.Rq.Rq;
+import model.member.MemberDAO;
 import service.Action;
 
 public class MemberPassModifyProAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nowpage = Integer.parseInt(request.getParameter("page"));
+		request.setCharacterEncoding("utf-8");
 		
-		ArticleDTO board = new ArticleDTO();
-		board.setIdx(Integer.parseInt(request.getParameter("idx")));
-		board.setEmail(request.getParameter("email"));
-		board.setSubject(request.getParameter("subject"));
-		board.setContents(request.getParameter("contents"));
-		board.setPass(request.getParameter("pass"));
+		String userPass = request.getParameter("userPass");
+		
+		MemberDAO dao = MemberDAO.getInstance();
+		
+		Rq rq = new Rq(request, response);
 
-		ArticleDAO dao = ArticleDAO.getInstance();
+		int row = dao.modifyPass(rq.getLoginedMemberId(), userPass);
 		
-		int row = dao.boardModify(board);
-		//System.out.println("idx : " + board.getIdx());
-		//System.out.println("pass : " + board.getPass());
-		//System.out.println("row : " + row);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
-		response.sendRedirect("/Board?cmd=board_list.do&page="+nowpage);
-
+		if (row == 1) {
+			rq.logout();
+			
+			out.print("<script>");
+			out.print("alert('비밀번호 변경 성공, 다시 로그인 해주십시오.');");
+			out.print("window.opener.location.href='/Member?cmd=member_login.do';");
+			out.print("self.close();");
+			out.print("</script>");
+		} else {
+			out.print("<script>");
+			out.print("alert('오류');");
+			out.print("window.opener.history.back();");
+			out.print("self.close();");
+			out.print("</script>");
+		}
 
 	}
 

@@ -1,14 +1,15 @@
 package service.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.article.ArticleDAO;
-import model.article.ArticleDTO;
+import model.member.MemberDAO;
+import model.member.MemberDTO;
 import service.Action;
 
 public class MemberJoinProAction implements Action {
@@ -17,25 +18,26 @@ public class MemberJoinProAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		ArticleDAO dao = ArticleDAO.getInstance();
-		ArticleDTO board = new ArticleDTO();
+		MemberDAO dao = MemberDAO.getInstance();
+		MemberDTO member = new MemberDTO();
 		
 		int nowpage = Integer.parseInt(request.getParameter("page"));
 		
-		board.setName(request.getParameter("name"));
-		board.setPass(request.getParameter("pass"));
-		board.setEmail(request.getParameter("email"));
-		board.setSubject(request.getParameter("subject"));
-		board.setContents(request.getParameter("contents"));
+		member.setNickname(request.getParameter("nickname"));
+		member.setUserid(request.getParameter("userId"));
+		member.setUserPass(request.getParameter("userPass"));
+		member.setEmail(request.getParameter("email"));
 		
-		int row = dao.boardWrite(board);
-	
-		request.setAttribute("page", nowpage);
-		request.setAttribute("row", row);
+		int row = dao.memberWrite(member);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/Board/board_write_pro.jsp");
-		rd.forward(request, response);
-
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		
+		out.print("<script>");
+		out.print("alert('회원가입 성공');");
+		out.print("window.opener.location.href='/Member?cmd=member_login.do';");
+		out.print("self.close();");
+		out.print("</script>");
 
 	}
 

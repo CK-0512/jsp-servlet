@@ -15,19 +15,8 @@ public class MemberFindPassAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idx = Integer.parseInt(request.getParameter("idx"));
-		int nowpage = Integer.parseInt(request.getParameter("page"));
-		
-		ArticleDAO dao = ArticleDAO.getInstance();
-		
-		ArticleDTO board = dao.boardSelect(idx);
-		
-		request.setAttribute("page", nowpage);
-		request.setAttribute("board", board);
-	
-		RequestDispatcher rd = request.getRequestDispatcher("/Board/board_modify.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/Member/member_findPass.jsp");
 		rd.forward(request, response);
-
 
 	}
 

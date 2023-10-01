@@ -9,19 +9,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Action;
-import service.article.ArticleDeleteAction;
-import service.article.ArticleDeleteProAction;
-import service.article.ArticleListAction;
-import service.article.ArticleModifyAction;
-import service.article.ArticleModifyProAction;
-import service.article.ArticleViewAction;
-import service.article.ArticleWriteAction;
-import service.article.ArticleWriteProAction;
+import service.member.MemberDeleteProAction;
+import service.member.MemberFindIdAction;
+import service.member.MemberFindIdProAction;
+import service.member.MemberFindPassAction;
+import service.member.MemberFindPassProAction;
+import service.member.MemberJoinAction;
+import service.member.MemberJoinProAction;
+import service.member.MemberListAction;
+import service.member.MemberLoginAction;
+import service.member.MemberLoginProAction;
+import service.member.MemberLogoutProAction;
+import service.member.MemberModifyAction;
+import service.member.MemberModifyProAction;
+import service.member.MemberPassChkAction;
+import service.member.MemberPassChkProAction;
+import service.member.MemberPassModifyAction;
+import service.member.MemberPassModifyProAction;
 
 /**
  * Servlet implementation class BoardController
  */
-@WebServlet("/Article")
+@WebServlet("/Member")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,22 +51,42 @@ public class MemberController extends HttpServlet {
 		
 		Action action = null;
 		
-		if(cmd.equals("article_list.do")) {
-			action = new ArticleListAction();
-		}else if(cmd.equals("article_write.do")) {//입력 폼
-			action = new ArticleWriteAction();
-		}else if(cmd.equals("article_write_pro.do")) {//입력 처리
-			action = new ArticleWriteProAction();
-		}else if(cmd.equals("article_view.do")) {
-			action = new ArticleViewAction();
-		}else if(cmd.equals("article_modify.do")) {
-			action = new ArticleModifyAction();
-		}else if(cmd.equals("article_modify_pro.do")) {
-			action = new ArticleModifyProAction();
-		}else if(cmd.equals("article_delete.do")) {
-			action = new ArticleDeleteAction();
-		}else if(cmd.equals("article_delete_pro.do")) {
-			action = new ArticleDeleteProAction();
+		if(cmd.equals("member_list.do")) {
+			action = new MemberListAction();
+		}else if(cmd.equals("member_join.do")) {
+			action = new MemberJoinAction();
+		}else if(cmd.equals("member_join_pro.do")) {
+			action = new MemberJoinProAction();
+		}else if(cmd.equals("member_login.do")) {
+			action = new MemberLoginAction();
+		}else if(cmd.equals("member_login_pro.do")) {
+			action = new MemberLoginProAction();
+		}else if(cmd.equals("member_logout_pro.do")) {
+			action = new MemberLogoutProAction();
+		}else if(cmd.equals("member_modify.do")) {
+			action = new MemberModifyAction();
+		}else if(cmd.equals("member_modify_pro.do")) {
+			action = new MemberModifyProAction();
+		}else if(cmd.equals("member_delete_pro.do")) {
+			action = new MemberDeleteProAction();
+		}else if(cmd.equals("member_delete_pro.do")) {
+			action = new MemberDeleteProAction();
+		}else if(cmd.equals("member_findId.do")) {
+			action = new MemberFindIdAction();
+		}else if(cmd.equals("member_findId_pro.do")) {
+			action = new MemberFindIdProAction();
+		}else if(cmd.equals("member_findPass.do")) {
+			action = new MemberFindPassAction();
+		}else if(cmd.equals("member_findPass.do")) {
+			action = new MemberFindPassProAction();
+		}else if(cmd.equals("member_passChk.do")) {
+			action = new MemberPassChkAction();
+		}else if(cmd.equals("member_passChk_pro.do")) {
+			action = new MemberPassChkProAction();
+		}else if(cmd.equals("member_passModify.do")) {
+			action = new MemberPassModifyAction();
+		}else if(cmd.equals("member_passModify_pro.do")) {
+			action = new MemberPassModifyProAction();
 		}
 		
 		action.execute(request, response);

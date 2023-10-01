@@ -1,36 +1,38 @@
 package service.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.article.ArticleDAO;
-import model.article.ArticleDTO;
+import model.member.MemberDAO;
+import model.member.MemberDTO;
 import service.Action;
 
 public class MemberModifyProAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nowpage = Integer.parseInt(request.getParameter("page"));
+		request.setCharacterEncoding("utf-8");
 		
-		ArticleDTO board = new ArticleDTO();
-		board.setIdx(Integer.parseInt(request.getParameter("idx")));
-		board.setEmail(request.getParameter("email"));
-		board.setSubject(request.getParameter("subject"));
-		board.setContents(request.getParameter("contents"));
-		board.setPass(request.getParameter("pass"));
-
-		ArticleDAO dao = ArticleDAO.getInstance();
+		MemberDAO dao = MemberDAO.getInstance();
+		MemberDTO member = new MemberDTO();
 		
-		int row = dao.boardModify(board);
-		//System.out.println("idx : " + board.getIdx());
-		//System.out.println("pass : " + board.getPass());
-		//System.out.println("row : " + row);
+		member.setNickname(request.getParameter("nickname"));
+		member.setEmail(request.getParameter("email"));
 		
-		response.sendRedirect("/Board?cmd=board_list.do&page="+nowpage);
+		int row = dao.memberUpdate(member);
+		
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		
+		out.print("<script>");
+		out.print("alert('회원정보 수정이 완료되었습니다.');");
+		out.print("window.opener.location.href='/Member?cmd=member_modify.do';");
+		out.print("self.close();");
+		out.print("</script>");
 
 
 	}

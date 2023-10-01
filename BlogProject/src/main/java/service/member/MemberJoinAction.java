@@ -13,11 +13,7 @@ public class MemberJoinAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nowpage = Integer.parseInt(request.getParameter("page"));
-		
-		request.setAttribute("page", nowpage);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/Board/board_write.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/Member/member_join.jsp");
 		rd.forward(request, response);
 
 	}
