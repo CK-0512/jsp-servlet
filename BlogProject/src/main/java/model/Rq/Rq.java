@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.Locale.Category;
+package model.Rq;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,14 +6,12 @@ import javax.servlet.http.HttpSession;
 
 import model.member.MemberDAO;
 import model.member.MemberDTO;
-import model.notice.NoticeDAO;
-import model.notice.NoticeDTO;
 
 public class Rq {
 
     private int loginedMemberId;
     private MemberDTO loginedMember;
-    private List<NoticeDTO> memberNotices;
+    //private List<NoticeDTO> memberNotices;
     
     private HttpServletRequest req;
     private HttpServletResponse resp;
@@ -27,20 +24,19 @@ public class Rq {
         
         int loginedMemberId = 0;
         MemberDTO loginedMember = null;
-        int cartSize = 0;
-        List<NoticeDTO> memberNotices = null;
+        //List<NoticeDTO> memberNotices = null;
         
         if (session.getAttribute("loginedMemberId") != null) {
         	MemberDAO mdao = MemberDAO.getInstance();
-        	NoticeDAO ndao = NoticeDAO.getInstance();
+        	//NoticeDAO ndao = NoticeDAO.getInstance();
             loginedMemberId = (int) session.getAttribute("loginedMemberId");
             loginedMember = mdao.memberSelect(loginedMemberId);
-            memberNotices = ndao.getMemberNotices(loginedMemberId);
+            //memberNotices = ndao.getMemberNotices(loginedMemberId);
         }
         
         this.loginedMemberId = loginedMemberId;
         this.loginedMember = loginedMember;
-        this.memberNotices = memberNotices;
+        //this.memberNotices = memberNotices;
         
         this.req.setAttribute("rq", this);
     }
@@ -73,13 +69,13 @@ public class Rq {
 		this.loginedMember = loginedMember;
 	}
 
-	public List<NoticeDTO> getMemberNotices() {
-		return memberNotices;
-	}
-
-	public void setMemberNotices(List<NoticeDTO> memberNotices) {
-		this.memberNotices = memberNotices;
-	}
+//	public List<NoticeDTO> getMemberNotices() {
+//		return memberNotices;
+//	}
+//
+//	public void setMemberNotices(List<NoticeDTO> memberNotices) {
+//		this.memberNotices = memberNotices;
+//	}
     
     
 }

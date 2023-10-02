@@ -15,17 +15,17 @@ public class ArticleModifyAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idx = Integer.parseInt(request.getParameter("idx"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		int nowpage = Integer.parseInt(request.getParameter("page"));
 		
 		ArticleDAO dao = ArticleDAO.getInstance();
 		
-		ArticleDTO board = dao.boardSelect(idx);
+		ArticleDTO board = dao.articleSelect(id);
 		
 		request.setAttribute("page", nowpage);
 		request.setAttribute("board", board);
 	
-		RequestDispatcher rd = request.getRequestDispatcher("/Board/board_modify.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/Article/article_modify.jsp");
 		rd.forward(request, response);
 
 

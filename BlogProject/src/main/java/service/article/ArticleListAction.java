@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.article.ArticleDAO;
 import model.article.ArticleDTO;
+import model.util.PageIndex;
 import service.Action;
 
 public class ArticleListAction implements Action {
@@ -18,15 +19,15 @@ public class ArticleListAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArticleDAO dao = ArticleDAO.getInstance();
 		
-		String search="", key="", url="board_list.jsp";
+		String search="", key="", url="article_list.jsp";
 		int totcount=0;//게시글 총수
 		//검색 판단
 		if(request.getParameter("key") != null){
 			key=request.getParameter("key");
 			search = request.getParameter("search");
-			totcount = dao.boardCount(search, key);
+			totcount = dao.articleCount(search, key);
 		}else {
-			totcount = dao.boardCount();
+			totcount = dao.articleCount();
 		}
 		
 		int nowpage=1;//현재페이지 초기화
@@ -51,21 +52,29 @@ public class ArticleListAction implements Action {
 		
 		List<ArticleDTO> list = null;
 		if(key.equals("")) {
-			list = dao.boardList(startpage, endpage);
+			list = dao.articleList(startpage, endpage);
 		}else {
-			list = dao.boardList(search, key, startpage, endpage);
+			list = dao.articleList(search, key, startpage, endpage);
 		}
-
+		
+		//페이지 처리
+		String pageSkip = "";
+		if(key.equals("")) {
+			pageSkip = PageIndex.pageList(nowpage, totpage, url, "");
+		}else {
+			pageSkip = PageIndex.pageListHan(nowpage, totpage, url, search, key);			
+		}
 		//jsp에서 사용될 값을 request 내장객체에 담기
 		request.setAttribute("page", nowpage);
 		request.setAttribute("totpage", totpage);
 		request.setAttribute("totcount", totcount);
 		request.setAttribute("listcount", listcount);
 		request.setAttribute("list", list);
+		request.setAttribute("pageSkip", pageSkip);
 		request.setAttribute("search", search);
 		request.setAttribute("key", key);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/Board/board_list.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/Article/article_list.jsp");
 		rd.forward(request, response);
 		
 	}

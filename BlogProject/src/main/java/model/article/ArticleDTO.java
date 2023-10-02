@@ -1,61 +1,69 @@
 package model.article;
 
 public class ArticleDTO {
-	private int idx;
-	private String name;
-	private String pass;
-	private String email;
-	private String subject;
-	private String contents;
-	private String regdate;
-	private int readcnt;
+	private int id;
+	private int memberId;
+	private int memberType;
+	private String title;
+	private String body;
+	private String regDate;
+	private String updateDate;
+	private int hitCnt;
+	private int boardId;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+	public int getMemberType() {
+		return memberType;
+	}
+	public void setMemberType(int memberType) {
+		this.memberType = memberType;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getBody() {
+		return body;
+	}
+	public void setBody(String body) {
+		this.body = body;
+	}
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	public String getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
+	public int getHitCnt() {
+		return hitCnt;
+	}
+	public void setHitCnt(int hitCnt) {
+		this.hitCnt = hitCnt;
+	}
+	public int getBoardId() {
+		return boardId;
+	}
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
+	}
 	
-	public int getIdx() {
-		return idx;
-	}
-	public void setIdx(int idx) {
-		this.idx = idx;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPass() {
-		return pass;
-	}
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getSubject() {
-		return subject;
-	}
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-	public String getContents() {
-		return contents;
-	}
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
-	public String getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
-	}
-	public int getReadcnt() {
-		return readcnt;
-	}
-	public void setReadcnt(int readcnt) {
-		this.readcnt = readcnt;
-	}
+	
 }

@@ -6,11 +6,16 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Member"/>
+		<item key="selection" value="member"/>
 		<list key="findhistory">
-			<item value="Article"/>
-			<item value="View"/>
 			<item value="article"/>
+			<item value="Article"/>
+			<item value="tbl_m"/>
+			<item value="tbl_a"/>
+			<item value="idx"/>
+			<item value="board"/>
+			<item value="Board"/>
+			<item value="View"/>
 			<item value="Name"/>
 			<item value="name"/>
 			<item value="tuser"/>
@@ -19,8 +24,13 @@
 			<item value="url"/>
 		</list>
 		<list key="replacehistory">
-			<item value="Member"/>
 			<item value="member"/>
+			<item value="Member"/>
+			<item value="m"/>
+			<item value="a"/>
+			<item value="id"/>
+			<item value="article"/>
+			<item value="Article"/>
 			<item value="Nickname"/>
 			<item value="nickname"/>
 			<item value="tUser"/>
@@ -32,6 +42,6 @@
 		<item key="DIALOG_Y_ORIGIN" value="353"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>

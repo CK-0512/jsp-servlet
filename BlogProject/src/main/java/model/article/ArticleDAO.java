@@ -22,11 +22,11 @@ public class ArticleDAO {
 	ResultSet rs = null;
 	
 	//게시판 글 총수 계산
-	public int boardCount() {
+	public int articleCount() {
 		//리턴타입
 		int row=0;
 		//쿼리
-		String query="select count(*) from tbl_board";
+		String query="select count(*) from article";
 		
 		try {
 			conn = DBManager.getConnection();
@@ -44,12 +44,12 @@ public class ArticleDAO {
 	}
 
 	//게시판 글 총수 계산(검색조건포함)
-	public int boardCount(String search, String key) {
+	public int articleCount(String search, String key) {
 		//리턴타입
 		int row=0;
 		//쿼리
-		//String query="select count(*) from tbl_board where " + search + " like '%" + key + "%'";
-		String query="select count(*) from tbl_board where " + search + " like ? ";
+		//String query="select count(*) from article where " + search + " like '%" + key + "%'";
+		String query="select count(*) from article where " + search + " like ? ";
 		
 		try {
 			conn = DBManager.getConnection();
@@ -68,27 +68,28 @@ public class ArticleDAO {
 	}
 
 	//게시판 전체목록
-	public List<ArticleDTO> boardList() {
+	public List<ArticleDTO> articleList() {
 		//리턴타입
 		List<ArticleDTO> list = new ArrayList<>();
 		//쿼리
-		String query="select * from tbl_board order by regdate desc";
+		String query="select * from article order by regdate desc";
 		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
-			ArticleDTO board = null;
+			ArticleDTO article = null;
 			while(rs.next()) {
-				board = new ArticleDTO();
-				board.setIdx(rs.getInt("idx"));
-				board.setName(rs.getString("name"));
-				board.setEmail(rs.getString("email"));
-				board.setSubject(rs.getString("subject"));
-				board.setRegdate(rs.getString("regdate"));
-				board.setReadcnt(rs.getInt("readcnt"));
+				article = new ArticleDTO();
+				article.setId(rs.getInt("id"));
+				article.setMemberId(rs.getInt("memberId"));
+				article.setMemberType(rs.getInt("memberType"));
+				article.setTitle(rs.getString("name"));
+				article.setBoardId(rs.getInt("boardId"));
+				article.setRegDate(rs.getString("regDate"));
+				article.setHitCnt(rs.getInt("hitCnt"));
 			
-				list.add(board);
+				list.add(article);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -97,47 +98,12 @@ public class ArticleDAO {
 		}
 		return list;
 	}
-	// 전체목록- 검색기능추가
-	public List<ArticleDTO> boardList(String search, String key) {
-		List<ArticleDTO> list = new ArrayList<>();// 리턴타입
-		String query="select * from tbl_board where " + search + " like ? order by idx desc";
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, "%" + key + "%");
-			rs = pstmt.executeQuery();
-			ArticleDTO board = null;
-			while(rs.next()) {
-				board = new ArticleDTO();
-				board.setIdx(rs.getInt("idx"));
-				board.setName(rs.getString("name"));
-				board.setEmail(rs.getString("email"));
-				board.setSubject(rs.getString("subject"));
-				board.setRegdate(rs.getString("regdate"));
-				board.setReadcnt(rs.getInt("readcnt"));
-			
-				list.add(board);
-			}
-		
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(rs != null) rs.close();
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return list;
-	}
 
 	// 전체목록- 페이지처리 추가
-	public List<ArticleDTO> boardList(int startpage, int endpage) {
+	public List<ArticleDTO> articleList(int startpage, int endpage) {
 		List<ArticleDTO> list = new ArrayList<>();// 리턴타입
 		String query="select X.* from (select rownum as rnum, A.* from " + 
-				"(select * from tbl_board order by idx desc) A " + 
+				"(select * from article order by id desc) A " + 
 				" where rownum <= ?) X where X.rnum >= ?";
 
 		try {
@@ -148,17 +114,18 @@ public class ArticleDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			ArticleDTO board = null;
+			ArticleDTO article = null;
 			while(rs.next()) {
-				board = new ArticleDTO();
-				board.setIdx(rs.getInt("idx"));
-				board.setName(rs.getString("name"));
-				board.setEmail(rs.getString("email"));
-				board.setSubject(rs.getString("subject"));
-				board.setRegdate(rs.getString("regdate"));
-				board.setReadcnt(rs.getInt("readcnt"));
+				article = new ArticleDTO();
+				article.setId(rs.getInt("id"));
+				article.setMemberId(rs.getInt("memberId"));
+				article.setMemberType(rs.getInt("memberType"));
+				article.setTitle(rs.getString("name"));
+				article.setBoardId(rs.getInt("boardId"));
+				article.setRegDate(rs.getString("regDate"));
+				article.setHitCnt(rs.getInt("hitCnt"));
 			
-				list.add(board);
+				list.add(article);
 			}
 		
 		}catch(Exception e) {
@@ -176,10 +143,10 @@ public class ArticleDAO {
 	}
 	
 	// 전체목록- 검색 + 페이지처리 추가
-	public List<ArticleDTO> boardList(String search, String key, int startpage, int endpage) {
+	public List<ArticleDTO> articleList(String search, String key, int startpage, int endpage) {
 		List<ArticleDTO> list = new ArrayList<>();// 리턴타입
 		String query="select X.* from (select rownum as rnum, A.* from " + 
-				"(select * from tbl_board order by idx desc) A " + 
+				"(select * from article order by id desc) A " + 
 				" where " + search + " like ? and rownum <= ?) X where " + search + " like ?  and X.rnum >= ?";
 
 		try {
@@ -192,17 +159,18 @@ public class ArticleDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			ArticleDTO board = null;
+			ArticleDTO article = null;
 			while(rs.next()) {
-				board = new ArticleDTO();
-				board.setIdx(rs.getInt("idx"));
-				board.setName(rs.getString("name"));
-				board.setEmail(rs.getString("email"));
-				board.setSubject(rs.getString("subject"));
-				board.setRegdate(rs.getString("regdate"));
-				board.setReadcnt(rs.getInt("readcnt"));
-			
-				list.add(board);
+				article = new ArticleDTO();
+				article.setId(rs.getInt("id"));
+				article.setMemberId(rs.getInt("memberId"));
+				article.setMemberType(rs.getInt("memberType"));
+				article.setTitle(rs.getString("name"));
+				article.setBoardId(rs.getInt("boardId"));
+				article.setRegDate(rs.getString("regDate"));
+				article.setHitCnt(rs.getInt("hitCnt"));
+				
+				list.add(article);
 			}
 		
 		}catch(Exception e) {
@@ -220,24 +188,24 @@ public class ArticleDAO {
 	}
 	
 	//글 등록
-	public int boardWrite(ArticleDTO board) {
+	public int articleWrite(ArticleDTO article) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		//리터타입
 		int row=0;
 		//query
-		String sql="insert into tbl_board(idx,name,pass,email,subject,contents) "
-				+ "values(tbl_board_seq_idx.nextval, ? ,?, ?, ?, ?)";
+		String sql="insert into article(title,body,boardId,memberId,memberType) "
+				+ "values(? ,?, ?, ?, ?)";
 		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, board.getName());
-			pstmt.setString(2, board.getPass());
-			pstmt.setString(3, board.getEmail());
-			pstmt.setString(4, board.getSubject());
-			pstmt.setString(5, board.getContents());
+			pstmt.setString(1, article.getTitle());
+			pstmt.setString(2, article.getBody());
+			pstmt.setInt(3, article.getBoardId());
+			pstmt.setInt(4, article.getMemberId());
+			pstmt.setInt(5, article.getMemberType());
 			
 			row= pstmt.executeUpdate();
 
@@ -254,19 +222,17 @@ public class ArticleDAO {
 	}
 
 	//특정글 조회 증가
-	public void boardHits(int idx) {
+	public void articleHits(int id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		//리터타입
-		int row=0;
 		//query
-		String sql="update tbl_board set readcnt=readcnt+1 where idx=?";
+		String sql="update article set hitcnt=hitcnt+1 where id=?";
 		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, idx);
+			pstmt.setInt(1, id);
 			
 			pstmt.executeUpdate();
 
@@ -284,29 +250,30 @@ public class ArticleDAO {
 
 
 	// 특정글 검색(view)
-	public ArticleDTO boardSelect(int idx) {
+	public ArticleDTO articleSelect(int id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		//리터타입
-		ArticleDTO board = new ArticleDTO();
+		ArticleDTO article = new ArticleDTO();
 		//query
-		String sql="select * from tbl_board where idx=?";
+		String sql="select * from article where id=?";
 		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, idx);
+			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				board.setIdx(rs.getInt("idx"));
-				board.setName(rs.getString("name"));
-				board.setPass(rs.getString("pass"));
-				board.setEmail(rs.getString("email"));
-				board.setSubject(rs.getString("subject"));
-				board.setContents(rs.getString("contents"));
-				board.setRegdate(rs.getString("regdate"));
-				board.setReadcnt(rs.getInt("readcnt"));
+				article.setId(rs.getInt("id"));
+				article.setMemberId(rs.getInt("memberId"));
+				article.setMemberType(rs.getInt("memberType"));
+				article.setTitle(rs.getString("name"));
+				article.setBoardId(rs.getInt("boardId"));
+				article.setRegDate(rs.getString("regDate"));
+				article.setUpdateDate(rs.getString("updateDate"));
+				article.setHitCnt(rs.getInt("hitCnt"));
+				article.setBody(rs.getString("body"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -317,29 +284,27 @@ public class ArticleDAO {
 				if(conn != null) conn.close();				
 			}catch(Exception e){}
 		}
-		return board;
+		return article;
 	}
 	
 	//수정
-	public int boardModify(ArticleDTO board) {
+	public int articleModify(ArticleDTO article) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		//리터타입
 		int row = 0;
 		//query
-		String sql="update tbl_board set email=?, subject=?, contents=? "
-				+ " where idx=? and pass=?";
+		String sql="update article set title=?, body=?, updateDate=sysdate "
+				+ " where id=?";
 		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, board.getEmail());
-			pstmt.setString(2, board.getSubject());
-			pstmt.setString(3, board.getContents());
-			pstmt.setInt(4, board.getIdx());
-			pstmt.setString(5, board.getPass());
+			pstmt.setString(1, article.getTitle());
+			pstmt.setString(2, article.getBody());
+			pstmt.setInt(3, article.getId());
 
 			row= pstmt.executeUpdate();
 			
@@ -355,20 +320,21 @@ public class ArticleDAO {
 		return row;
 	}
 	
-	public int boardDelete(int idx, String pass) {
+
+	public int articleDelete(int id) {
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		//리터타입
 		int row=0;
 		//query
-		String sql="delete from tbl_board where idx=? and pass=?";
+		String sql="delete from article where id=?";
 		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, idx);
-			pstmt.setString(2, pass);
+			pstmt.setInt(1, id);
 			
 			row= pstmt.executeUpdate();
 

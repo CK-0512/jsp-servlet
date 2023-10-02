@@ -14,12 +14,12 @@ public class ArticleDeleteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int nowpage = Integer.parseInt(request.getParameter("page"));
-		int idx = Integer.parseInt(request.getParameter("idx"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		request.setAttribute("page", nowpage);
-		request.setAttribute("idx", idx);
+		request.setAttribute("id", id);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/Board/board_delete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/Article/article_delete.jsp");
 		rd.forward(request, response);
 
 

@@ -17,7 +17,7 @@ public class ArticleWriteAction implements Action {
 		
 		request.setAttribute("page", nowpage);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/Board/board_write.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/Article/article_write.jsp");
 		rd.forward(request, response);
 
 	}

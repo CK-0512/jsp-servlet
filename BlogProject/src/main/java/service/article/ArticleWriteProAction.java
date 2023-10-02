@@ -1,12 +1,13 @@
 package service.article;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Rq.Rq;
 import model.article.ArticleDAO;
 import model.article.ArticleDTO;
 import service.Action;
@@ -18,25 +19,32 @@ public class ArticleWriteProAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		
 		ArticleDAO dao = ArticleDAO.getInstance();
-		ArticleDTO board = new ArticleDTO();
+		ArticleDTO article = new ArticleDTO();
+		Rq rq = new Rq(request, response);
 		
 		int nowpage = Integer.parseInt(request.getParameter("page"));
 		
-		board.setName(request.getParameter("name"));
-		board.setPass(request.getParameter("pass"));
-		board.setEmail(request.getParameter("email"));
-		board.setSubject(request.getParameter("subject"));
-		board.setContents(request.getParameter("contents"));
+		article.setTitle(request.getParameter("title"));
+		article.setBody(request.getParameter("body"));
+		article.setMemberId(rq.getLoginedMemberId());
+		article.setMemberType(rq.getLoginedMember().getAuthLevel());
 		
-		int row = dao.boardWrite(board);
-	
-		request.setAttribute("page", nowpage);
-		request.setAttribute("row", row);
+		int row = dao.articleWrite(article);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/Board/board_write_pro.jsp");
-		rd.forward(request, response);
-
-
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		
+		if(row==1) {
+			out.print("<script>");
+			out.print("alert('글이 생성되었습니다');");
+			out.print("window.opener.location.href='/Article?cmd=article_list.do?page="+ nowpage +"';");
+			out.print("self.close();");
+			out.print("</script>");
+		}else {
+			out.print("<script>");
+			out.print("alert('오류');");
+			out.print("history.back()");
+			out.print("</script>");			
+		}
 	}
-
 }
