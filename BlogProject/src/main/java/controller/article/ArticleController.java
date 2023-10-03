@@ -42,21 +42,21 @@ public class ArticleController extends HttpServlet {
 		
 		Action action = null;
 		
-		if(cmd.equals("article_list.do")) {
+		if(cmd.equals("article_list")) {
 			action = new ArticleListAction();
-		}else if(cmd.equals("article_write.do")) {//입력 폼
+		}else if(cmd.equals("article_write")) {//입력 폼
 			action = new ArticleWriteAction();
-		}else if(cmd.equals("article_write_pro.do")) {//입력 처리
+		}else if(cmd.equals("article_write_pro")) {//입력 처리
 			action = new ArticleWriteProAction();
-		}else if(cmd.equals("article_view.do")) {
+		}else if(cmd.equals("article_view")) {
 			action = new ArticleViewAction();
-		}else if(cmd.equals("article_modify.do")) {
+		}else if(cmd.equals("article_modify")) {
 			action = new ArticleModifyAction();
-		}else if(cmd.equals("article_modify_pro.do")) {
+		}else if(cmd.equals("article_modify_pro")) {
 			action = new ArticleModifyProAction();
-		}else if(cmd.equals("article_delete.do")) {
+		}else if(cmd.equals("article_delete")) {
 			action = new ArticleDeleteAction();
-		}else if(cmd.equals("article_delete_pro.do")) {
+		}else if(cmd.equals("article_delete_pro")) {
 			action = new ArticleDeleteProAction();
 		}
 		

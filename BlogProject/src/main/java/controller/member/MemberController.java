@@ -69,8 +69,6 @@ public class MemberController extends HttpServlet {
 			action = new MemberModifyProAction();
 		}else if(cmd.equals("member_delete_pro.do")) {
 			action = new MemberDeleteProAction();
-		}else if(cmd.equals("member_delete_pro.do")) {
-			action = new MemberDeleteProAction();
 		}else if(cmd.equals("member_findId.do")) {
 			action = new MemberFindIdAction();
 		}else if(cmd.equals("member_findId_pro.do")) {

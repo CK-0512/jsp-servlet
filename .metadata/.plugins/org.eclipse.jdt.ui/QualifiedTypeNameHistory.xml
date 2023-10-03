@@ -30,4 +30,5 @@
     <fullyQualifiedTypeName name="service.member.MemberPassModifyProAction"/>
     <fullyQualifiedTypeName name="service.member.MemberLogoutProAction"/>
     <fullyQualifiedTypeName name="model.member.MemberDAO"/>
+    <fullyQualifiedTypeName name="javax.servlet.Filter"/>
 </qualifiedTypeNameHistroy>

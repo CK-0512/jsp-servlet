@@ -23,16 +23,14 @@ public class MemberLogoutProAction implements Action {
 		if (rq.getLoginedMemberId() == 0) {
 			out.print("<script>");
 			out.print("alert('로그인 후 이용해주세요.');");
-			out.print("window.opener.history.back();");
-			out.print("self.close();");
+			out.print("history.back();");
 			out.print("</script>");
 		}
 		
 		rq.logout();
 		out.print("<script>");
 		out.print("alert('정상적으로 로그아웃 되었습니다.');");
-		out.print("window.opener.location.href='/';");
-		out.print("self.close();");
+		out.print("location.href='/';");
 		out.print("</script>");
 
 	}

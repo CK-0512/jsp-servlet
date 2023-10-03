@@ -32,7 +32,7 @@
 </head>
 <body>
 
-	<div class="navbar bg-base-300 fixed rounded-3xl top-0 z-10">
+	<div class="navbar bg-base-300 rounded-3xl fixed top-0 z-10">
 		<div class="navbar-start">
 			<div class="dropdown">
 				<label tabindex="0" class="btn btn-ghost btn-circle"> <svg
@@ -43,17 +43,19 @@
 				</label>
 				<ul tabindex="0"
 					class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-28">
-					<li><a href="/Article?cmd=article_list&boardId=1.do">일상</a></li>
-					<li><a href="/Article?cmd=article_list&boardId=2.do">공부</a></li>
-					<li><a href="/Article?cmd=article_list&boardId=3.do">기업 정보</a></li>
-					<li><a href="/Article?cmd=article_list&boardId=4.do">구인 정보</a></li>
-					<li><a href="/Article?cmd=article_list&boardId=5.do">일정표</a></li>
-					<li><a href="/Article?cmd=article_list&boardId=6.do">질의 응답</a></li>
+					<li><a href="/Article?cmd=article_list&boardId=1">일상</a></li>
+					<li><a href="/Article?cmd=article_list&boardId=2">공부</a></li>
+					<li><a href="/Article?cmd=article_list&boardId=3">기업 정보</a></li>
+					<li><a href="/Article?cmd=article_list&boardId=4">구인 정보</a></li>
+					<c:if test="${rq.loginedMember.authLevel == 0 }">	
+						<li><a href="/Article?cmd=article_list&boardId=5">일정표</a></li>
+					</c:if>
+					<li><a href="/Article?cmd=article_list&boardId=6">질의 응답</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="navbar-center">
-			<a href="/usr/home/main" class="btn btn-active normal-case text-bold text-5xl italic mb-2">C K A</a>
+			<a href="/Index?cmd=index.do" class="btn btn-active normal-case text-bold text-5xl italic mb-2">CK's BLOG</a>
 		</div>
 		<div class="navbar-end">
 			<div>
@@ -111,7 +113,7 @@
 					</c:if>
 					<c:if test="${rq.getLoginedMemberId() != 0}">
 						<c:choose>
-							<c:when test="${rq.getLoginedMember().authLevel != 3 }">
+							<c:when test="${rq.getLoginedMember().authLevel != 0 }">
 								<li><a class="items-center" href="/Member?cmd=member_detail.do">내정보</a></li>
 								<li><a href="/Member?cmd=member_modify.do">정보수정</a></li>
 							</c:when>

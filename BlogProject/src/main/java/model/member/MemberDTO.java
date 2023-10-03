@@ -6,6 +6,7 @@ public class MemberDTO {
 	private String userid;		//아이디
 	private String userPass;		//비번
 	private String email;		//이메일
+	private String regDate;
 	private int delStatus;
 	private int authLevel;
 	public String getNickname() {
@@ -49,6 +50,12 @@ public class MemberDTO {
 	}
 	public void setAuthLevel(int authLevel) {
 		this.authLevel = authLevel;
+	}
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
 	
 	

@@ -21,8 +21,6 @@ public class MemberJoinProAction implements Action {
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberDTO member = new MemberDTO();
 		
-		int nowpage = Integer.parseInt(request.getParameter("page"));
-		
 		member.setNickname(request.getParameter("nickname"));
 		member.setUserid(request.getParameter("userId"));
 		member.setUserPass(request.getParameter("userPass"));
@@ -35,8 +33,7 @@ public class MemberJoinProAction implements Action {
 		
 		out.print("<script>");
 		out.print("alert('회원가입 성공');");
-		out.print("window.opener.location.href='/Member?cmd=member_login.do';");
-		out.print("self.close();");
+		out.print("location.href='/Member?cmd=member_login.do';");
 		out.print("</script>");
 
 	}

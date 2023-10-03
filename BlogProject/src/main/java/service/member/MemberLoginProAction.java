@@ -23,7 +23,7 @@ public class MemberLoginProAction implements Action {
 		
 		Rq rq = new Rq(request, response);
 		
-		String userid = request.getParameter("userid");
+		String userId = request.getParameter("userId");
 		String userPass = request.getParameter("userPass");
 		
 		if (rq.getLoginedMemberId() != 0) {
@@ -36,29 +36,26 @@ public class MemberLoginProAction implements Action {
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		
-		int row = dao.memberLogin(userid, userPass);
+		int row = dao.memberLogin(userId, userPass);
 		
 		if (row == 1) {
-			MemberDTO member = dao.getMember(userid, userPass);
+			MemberDTO member = dao.getMember(userId, userPass);
 			rq.login(member);
 			
 			out.print("<script>");
 			out.print("alert('로그인 성공');");
-			out.print("window.opener.location.href='/';");
-			out.print("self.close();");
+			out.print("location.href='/';");
 			out.print("</script>");
 			
 		} else if (row == 0) {
 			out.print("<script>");
 			out.print("alert('존재하지 않는 아이디입니다.');");
-			out.print("window.opener.history.back();");
-			out.print("self.close();");
+			out.print("history.back();");
 			out.print("</script>");
 		} else if (row == -1) {
 			out.print("<script>");
 			out.print("alert('비밀번호 오류');");
-			out.print("window.opener.history.back();");
-			out.print("self.close();");
+			out.print("history.back();");
 			out.print("</script>");
 		}
 

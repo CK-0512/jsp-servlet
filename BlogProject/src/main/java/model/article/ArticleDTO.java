@@ -3,6 +3,7 @@ package model.article;
 public class ArticleDTO {
 	private int id;
 	private int memberId;
+	private String writerName;
 	private int memberType;
 	private String title;
 	private String body;
@@ -64,6 +65,11 @@ public class ArticleDTO {
 	public void setBoardId(int boardId) {
 		this.boardId = boardId;
 	}
-	
+	public String getWriterName() {
+		return writerName;
+	}
+	public void setWriterName(String writerName) {
+		this.writerName = writerName;
+	}
 	
 }

@@ -36,12 +36,12 @@ public class MemberDAO {
 			pstmt.setString(1, vo.getNickname());
 			pstmt.setString(2, vo.getUserid());
 			pstmt.setString(3, vo.getUserPass());
-			pstmt.setString(8, vo.getEmail());
+			pstmt.setString(4, vo.getEmail());
 			row = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt, rs);
+			DBManager.close(conn, pstmt);
 		}
 		return row;
 	}
@@ -174,7 +174,7 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt, rs);
+			DBManager.close(conn, pstmt);
 		}
 		return row;
 	}
@@ -194,7 +194,7 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt, rs);
+			DBManager.close(conn, pstmt);
 		}
 		return row;
 	}
@@ -303,7 +303,7 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt, rs);
+			DBManager.close(conn, pstmt);
 		}
 		return row;
 	}

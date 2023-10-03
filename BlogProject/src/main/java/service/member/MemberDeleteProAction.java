@@ -18,7 +18,7 @@ public class MemberDeleteProAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int nowpage = Integer.parseInt(request.getParameter("nowpage"));
+		int nowpage = Integer.parseInt(request.getParameter("page"));
 		String ids = request.getParameter("ids");
 		
 		MemberDAO dao = MemberDAO.getInstance();
@@ -43,8 +43,7 @@ public class MemberDeleteProAction implements Action {
 		if(row != 0) {
 			out.print("<script>");
 			out.print("alert('정상적으로 삭제되었습니다.');");
-			out.print("window.opener.location.href='/Member?cmd=member_list.do&page="+ nowpage +"';");
-			out.print("self.close();");
+			out.print("location.href='/Member?cmd=member_list.do&page="+ nowpage +"';");
 			out.print("</script>");
 		}else {
 			out.print("<script>");

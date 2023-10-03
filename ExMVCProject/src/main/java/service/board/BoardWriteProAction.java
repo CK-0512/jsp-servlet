@@ -36,7 +36,6 @@ public class BoardWriteProAction implements Action {
 		RequestDispatcher rd = request.getRequestDispatcher("/Board/board_write_pro.jsp");
 		rd.forward(request, response);
 
-
 	}
 
 }

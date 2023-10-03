@@ -106,9 +106,12 @@
 
 
 
-				<Context docBase="C:\Users\오창기\programing\WebProject-12\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ExMVCProject" path="" reloadable="true" source="org.eclipse.jst.jee.server:ExMVCProject">
-					<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="track2_12"/>
-				</Context>
+				
+			
+			
+			<Context docBase="C:\Users\오창기\programing\WebProject-12\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BlogProject" path="" reloadable="true" source="org.eclipse.jst.jee.server:BlogProject">
+				<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="track2_12"/>
+			</Context>
 			</Host>
 		</Engine>
 	</Service>

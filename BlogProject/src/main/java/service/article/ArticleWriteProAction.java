@@ -26,6 +26,7 @@ public class ArticleWriteProAction implements Action {
 		
 		article.setTitle(request.getParameter("title"));
 		article.setBody(request.getParameter("body"));
+		article.setBoardId(Integer.parseInt(request.getParameter("boardId")));
 		article.setMemberId(rq.getLoginedMemberId());
 		article.setMemberType(rq.getLoginedMember().getAuthLevel());
 		
@@ -37,8 +38,7 @@ public class ArticleWriteProAction implements Action {
 		if(row==1) {
 			out.print("<script>");
 			out.print("alert('글이 생성되었습니다');");
-			out.print("window.opener.location.href='/Article?cmd=article_list.do?page="+ nowpage +"';");
-			out.print("self.close();");
+			out.print("location.href='/Article?cmd=article_list&page="+ nowpage +"';");
 			out.print("</script>");
 		}else {
 			out.print("<script>");

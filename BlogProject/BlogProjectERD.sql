@@ -92,7 +92,7 @@ CREATE TABLE member
 	id number NOT NULL,
 	userId varchar2(10) NOT NULL UNIQUE,
 	userPass varchar2(20) NOT NULL,
-	eamil varchar2(20),
+	email varchar2(20),
 	nickname varchar2(10),
 	-- 0 = 본인, 1 = 일반회원
 	authLevel number DEFAULT 1 NOT NULL,
