@@ -19,7 +19,6 @@
     <fullyQualifiedTypeName name="service.Action"/>
     <fullyQualifiedTypeName name="service.board.BoardListAction"/>
     <fullyQualifiedTypeName name="service.board.BoardWriteProAction"/>
-    <fullyQualifiedTypeName name="model.notice.NoticeDAO"/>
     <fullyQualifiedTypeName name="service.member.MemberFindIdAction"/>
     <fullyQualifiedTypeName name="service.member.MemberFindIdProAction"/>
     <fullyQualifiedTypeName name="service.member.MemberFindPassAction"/>
@@ -33,4 +32,5 @@
     <fullyQualifiedTypeName name="javax.servlet.Filter"/>
     <fullyQualifiedTypeName name="model.blog.BlogDAO"/>
     <fullyQualifiedTypeName name="model.reply.ReplyDAO"/>
+    <fullyQualifiedTypeName name="model.notice.NoticeDAO"/>
 </qualifiedTypeNameHistroy>

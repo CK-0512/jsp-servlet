@@ -20,7 +20,10 @@ public class ArticleViewAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		int nowpage = Integer.parseInt(request.getParameter("page"));
+		int nowpage = 1;
+		if (request.getParameter("page") != null) {
+			nowpage = Integer.parseInt(request.getParameter("page"));
+		}
 		
 		ArticleDAO dao = ArticleDAO.getInstance();
 		//쿠키검사 및 설정

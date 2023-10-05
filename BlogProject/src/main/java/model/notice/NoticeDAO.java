@@ -1,267 +1,182 @@
-//package model.notice;
-//
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import model.util.DBManager;
-//
-//public class NoticeDAO {
-//	private NoticeDAO() {}
-//	private static NoticeDAO instance = new NoticeDAO();
-//    
-//	public static NoticeDAO getInstance() {
-//		return instance;
-//	}
-//
-//	Connection conn = null;
-//	PreparedStatement pstmt = null;
-//	ResultSet rs = null;
-//	//회원정보 등록 메소드
-//	public int memberWrite(NoticeDTO vo){
-//		
-//		String query="insert into tbl_member(name,userid,passwd,"
-//				+ "zip,addr1,addr2,tel,email,job,intro,"
-//				+ "favorite) values (?,?,?,?,?,?,?,?,?,?,?)";
-//		int row=0;//리턴타입
-//		try {
-//			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(query);
-//			pstmt.setString(1, vo.getName());
-//			pstmt.setString(2, vo.getUserid());
-//			pstmt.setString(3, vo.getPasswd());
-//			pstmt.setString(4, vo.getZip());
-//			pstmt.setString(5, vo.getAddr1());
-//			pstmt.setString(6, vo.getAddr2());
-//			pstmt.setString(7, vo.getTel());
-//			pstmt.setString(8, vo.getEmail());
-//			pstmt.setString(9, vo.getJob());
-//			pstmt.setString(10, vo.getIntro());
-//			pstmt.setString(11, vo.getFavorite());
-//			row = pstmt.executeUpdate();
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			DBManager.close(conn, pstmt,rs);
-//		}
-//		return row;
-//	}
-//
-//	//ID 중복 검사 메소드
-//	public int memberIDcheck(String userid){
-//
-//		String query="select count(*) as counter  from tbl_member where userid=?";
-//		int row=0;//리턴타입
-//		try {
-//			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(query);
-//			pstmt.setString(1, userid);
-//			rs = pstmt.executeQuery();
-//			if(rs.next()) {
-//				row = rs.getInt(1); //row = rs.getInt("counter");
-//			}
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			DBManager.close(conn, pstmt,rs);
-//		}
-//		return row;
-//	}
-///*	
-//	// 우편번호 검색 메소드
-//	public List<ZipVO> zipList(String addr) {
-//
-//		String query="select *  from zipcode where dong like '%" +addr +"%'";
-//		List<ZipVO> list = new ArrayList<ZipVO>();//리턴타입
-//		try {
-//			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(query);
-//			rs = pstmt.executeQuery();
-//			ZipVO vo=null;
-//			while(rs.next()) {
-//				vo = new ZipVO();
-//				vo.setNo(rs.getString("no"));
-//				vo.setZipcode(rs.getString("zipcode"));
-//				vo.setSido(rs.getString("sido"));
-//				vo.setGugun(rs.getString("gugun"));
-//				vo.setDong(rs.getString("dong"));
-//				vo.setBunji(rs.getString("bunji"));
-//				list.add(vo);
-//			}
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			DBManager.close(conn, pstmt,rs);
-//		}
-//		return list;
-//	}
-//*/	
-//	// 회원 전체 리스트 메소드
-//	public List<NoticeDTO> memberList() {
-//
-//		String query="select *  from tbl_member order by first_time desc";
-//		List<NoticeDTO> list = new ArrayList<NoticeDTO>();//리턴타입
-//		try {
-//			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(query);
-//			rs = pstmt.executeQuery();
-//			NoticeDTO vo=null;
-//			while(rs.next()) {
-//				vo = new NoticeDTO();
-//				vo.setName(rs.getString("name"));
-//				vo.setUserid(rs.getString("userid"));
-//				vo.setTel(rs.getString("tel"));
-//				vo.setEmail(rs.getString("email"));
-//				vo.setFirst_time(rs.getString("first_time"));
-//				vo.setLast_time(rs.getString("last_time"));
-//				list.add(vo);
-//			}
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			DBManager.close(conn, pstmt,rs);
-//		}
-//		return list;
-//	}
-//	// 로그인 체크
-//	public int memberLogin(String userid, String passwd)  {
-//
-//		String query = "select passwd from tbl_member where userid = ?";
-//		int row=0;
-//
-//		try {
-//			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(query);
-//			pstmt.setString(1,userid);		
-//			rs = pstmt.executeQuery();
-//			if(rs.next()){//아이디가 존재하는 경우
-//				String dbpass = rs.getString("passwd");
-//				if(dbpass.equals(passwd)){  //로그인에 성공하면 최근접속일자 지정
-//					query = "update tbl_member set last_time = sysdate where userid = ?";
-//					pstmt = conn.prepareStatement(query);
-//					pstmt.setString(1,userid);		
-//					pstmt.executeUpdate();
-//					row = 1;
-//				}else{ //비밀번호가 다른 경우
-//					row = 0;
-//				}
-//			}else{  //아이디가 없는 경우
-//				row = -1;
-//			}
-//		
-//		} catch(SQLException e)	{
-//			e.printStackTrace();
-//		} finally	{
-//			DBManager.close(conn, pstmt,rs);
-//		}
-//		return row;
-//	}
-//	// 특정 ID 검색
-//	public NoticeDTO memberSelect(String userid)  {
-//
-//		String query = "";
-//		NoticeDTO vo = new NoticeDTO();
-//		try {
-//			conn = DBManager.getConnection();
-//			query = "select * from tbl_member where userid = ?";
-//			pstmt = conn.prepareStatement(query);
-//
-//			pstmt.setString(1,userid);		
-//			rs = pstmt.executeQuery();
-//			if(rs.next()){
-//				vo.setUserid(rs.getString("userid"));
-//				vo.setName(rs.getString("name"));
-//				vo.setPasswd(rs.getString("passwd"));	
-//				vo.setGubun(rs.getString("gubun"));	
-//				vo.setZip(rs.getString("zip"));	
-//				vo.setAddr1(rs.getString("addr1"));	
-//				vo.setAddr2(rs.getString("addr2"));	
-//				vo.setTel(rs.getString("tel"));	
-//				vo.setEmail(rs.getString("email"));	
-//				vo.setJob(rs.getString("job"));	
-//				vo.setIntro(rs.getString("intro"));	
-//				vo.setFavorite(rs.getString("favorite"));	
-//				vo.setFirst_time(rs.getString("first_time"));	
-//				vo.setLast_time(rs.getString("last_time"));	
-//			}
-//		} catch(SQLException e)	{
-//			e.printStackTrace();
-//		} finally	{
-//			DBManager.close(conn, pstmt,rs);
-//		}
-//		return vo;
-//	}
-//
-//	// 회원정보 수정
-//	public int memberUpdate(NoticeDTO vo)  {
-//
-//		String query = "";
-//		int row=0;
-//		try {
-//			conn = DBManager.getConnection();
-//			query = "update tbl_member set zipcode = ?, addr1 = ?, addr2 = ?";
-//			query = query + ", tel = ?, email = ?, job = ?, intro = ?";
-//			query = query + ",favorite = ?";
-//			query = query + " where userid = ? and passwd = ?"; 			
-//			pstmt = conn.prepareStatement(query);
-//
-//			pstmt.setString(1,vo.getZip());		
-//			pstmt.setString(2,vo.getAddr1());		
-//			pstmt.setString(3,vo.getAddr2());		
-//			pstmt.setString(4,vo.getTel());		
-//			pstmt.setString(5,vo.getEmail());		
-//			pstmt.setString(6,vo.getJob());		
-//			pstmt.setString(7,vo.getIntro());		
-//			pstmt.setString(8,vo.getFavorite());		
-//			pstmt.setString(9,vo.getUserid());		
-//			pstmt.setString(10,vo.getPasswd());		
-//			
-//			row=pstmt.executeUpdate();
-//			
-//		} catch(Exception e)	{
-//			e.printStackTrace();
-//		} finally	{
-//			DBManager.close(conn, pstmt,rs);
-//		}
-//		return row;
-//	}
-//
-//	public List<NoticeDTO> getMemberNotices(int loginedMemberId) {
-//		
-//		String query = "";
-//		NoticeDTO vo = new NoticeDTO();
-//		try {
-//			conn = DBManager.getConnection();
-//			query = "select * from tbl_member where userid = ?";
-//			pstmt = conn.prepareStatement(query);
-//
-//			pstmt.setString(1,userid);		
-//			rs = pstmt.executeQuery();
-//			if(rs.next()){
-//				vo.setUserid(rs.getString("userid"));
-//				vo.setName(rs.getString("name"));
-//				vo.setPasswd(rs.getString("passwd"));	
-//				vo.setGubun(rs.getString("gubun"));	
-//				vo.setZip(rs.getString("zip"));	
-//				vo.setAddr1(rs.getString("addr1"));	
-//				vo.setAddr2(rs.getString("addr2"));	
-//				vo.setTel(rs.getString("tel"));	
-//				vo.setEmail(rs.getString("email"));	
-//				vo.setJob(rs.getString("job"));	
-//				vo.setIntro(rs.getString("intro"));	
-//				vo.setFavorite(rs.getString("favorite"));	
-//				vo.setFirst_time(rs.getString("first_time"));	
-//				vo.setLast_time(rs.getString("last_time"));	
-//			}
-//		} catch(SQLException e)	{
-//			e.printStackTrace();
-//		} finally	{
-//			DBManager.close(conn, pstmt,rs);
-//		}
-//		return vo;
-//	}
-//
-//}
+package model.notice;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import model.article.ArticleDTO;
+import model.util.DBManager;
+
+public class NoticeDAO {
+	private NoticeDAO() {
+	}
+
+	private static NoticeDAO instance = new NoticeDAO();
+
+	public static NoticeDAO getInstance() {
+		return instance;
+	}
+
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+
+	public void sendNotice(NoticeDTO notice) {
+
+		String query = "insert into notice (type, articleId, memberId, url) values (?, ?, ?, ?)";
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, notice.getType());
+			pstmt.setInt(2, notice.getArticleId());
+			pstmt.setInt(3, notice.getMemberId());
+			pstmt.setString(4, notice.getUrl());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+	}
+
+	public int noticeCount(int loginedMemberId) {
+		// 리턴타입
+		int row = 0;
+		// 쿼리
+		String query = "select count(*) from notice where memberId = ?";
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, loginedMemberId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				row = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return row;
+	}
+
+	public List<NoticeDTO> noticeList(int startpage, int endpage, int loginedMemberId) {
+		List<NoticeDTO> list = new ArrayList<>();// 리턴타입
+		String query = "select X.* from (select rownum as rnum, A.* from "
+				+ "(select * from notice where memberId = ? order by id desc) A " + " where rownum <= ?) X where X.rnum >= ?";
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, loginedMemberId);
+			pstmt.setInt(2, endpage);
+			pstmt.setInt(3, startpage);
+
+			rs = pstmt.executeQuery();
+
+			NoticeDTO notice = null;
+			while (rs.next()) {
+				notice = new NoticeDTO();
+				notice.setArticleId(rs.getInt("articleId"));
+				notice.setCheckStatus(rs.getInt("checkStatus"));
+				notice.setId(rs.getInt("id"));
+				notice.setMemberId(rs.getInt("memberId"));
+				notice.setRegDate(rs.getString("regDate"));
+				notice.setType(rs.getInt("type"));
+				notice.setUpdateDate(rs.getString("updateDate"));
+				notice.setUrl(rs.getString("url"));
+
+				list.add(notice);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	public NoticeDTO noticeSelect(int id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// 리터타입
+		NoticeDTO notice = new NoticeDTO();
+		// query
+		String sql = "select * from notice where id=?";
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				notice.setArticleId(rs.getInt("articleId"));
+				notice.setCheckStatus(rs.getInt("checkStatus"));
+				notice.setId(rs.getInt("id"));
+				notice.setMemberId(rs.getInt("memberId"));
+				notice.setRegDate(rs.getString("regDate"));
+				notice.setType(rs.getInt("type"));
+				notice.setUpdateDate(rs.getString("updateDate"));
+				notice.setUrl(rs.getString("url"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return notice;
+	}
+
+	public void readNotice(int id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// query
+		String sql = "update notice set checkStatus where id=?";
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		// return row;
+	}
+
+}

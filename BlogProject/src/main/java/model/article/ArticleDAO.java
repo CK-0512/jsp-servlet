@@ -516,4 +516,34 @@ public class ArticleDAO {
 		return row;
 	}
 
+	public int lastArticleId() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int articleId = 0;
+		String sql = "SELECT id FROM article WHERE ROWNUM <= 1 ORDER BY regDate DESC";
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				articleId = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return articleId;
+	}
+
 }
