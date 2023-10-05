@@ -15,7 +15,7 @@ import service.notice.NoticeViewAction;
 /**
  * Servlet implementation class BoardController
  */
-@WebServlet("/Article")
+@WebServlet("/Notice")
 public class NoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

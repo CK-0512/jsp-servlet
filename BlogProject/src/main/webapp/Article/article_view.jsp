@@ -136,7 +136,7 @@
 			
 			<c:if test="${rq.loginedMemberId != 0 }">
 				<form action="/Reply?cmd=reply_write_pro" method="POST">
-					<input type="hidden" name="page" value="\${page}"/>
+					<input type="hidden" name="page" value="${page}"/>
 					<input type="hidden" name="articleId" value="${article.id }"/>
 					<div class="mt-4 border border-gray-400 rounded-lg text-base p-4">
 						<div class="mb-2"><span>${rq.loginedMember.nickname }</span></div>

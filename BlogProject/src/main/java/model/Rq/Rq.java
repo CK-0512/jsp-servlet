@@ -1,20 +1,18 @@
 package model.Rq;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.member.MemberDAO;
 import model.member.MemberDTO;
-import model.notice.NoticeDTO;
+import model.notice.NoticeDAO;
 
 public class Rq {
 
     private int loginedMemberId;
     private MemberDTO loginedMember;
-    private List<NoticeDTO> memberNotices;
+    private int memberNotices;
     
     private HttpServletRequest req;
     private HttpServletResponse resp;
@@ -27,19 +25,19 @@ public class Rq {
         
         int loginedMemberId = 0;
         MemberDTO loginedMember = null;
-        List<NoticeDTO> memberNotices = null;
+        int memberNotices = 0;
         
         if (session.getAttribute("loginedMemberId") != null) {
         	MemberDAO mdao = MemberDAO.getInstance();
-        	//NoticeDAO ndao = NoticeDAO.getInstance();
+        	NoticeDAO ndao = NoticeDAO.getInstance();
             loginedMemberId = (int) session.getAttribute("loginedMemberId");
             loginedMember = mdao.memberSelect(loginedMemberId);
-            //memberNotices = ndao.getMemberNotices(loginedMemberId);
+            memberNotices = ndao.noticeCount(loginedMemberId);
         }
         
         this.loginedMemberId = loginedMemberId;
         this.loginedMember = loginedMember;
-        //this.memberNotices = memberNotices;
+        this.memberNotices = memberNotices;
         
         this.req.setAttribute("rq", this);
     }
@@ -72,11 +70,11 @@ public class Rq {
 		this.loginedMember = loginedMember;
 	}
 
-	public List<NoticeDTO> getMemberNotices() {
+	public int getMemberNotices() {
 		return memberNotices;
 	}
 
-	public void setMemberNotices(List<NoticeDTO> memberNotices) {
+	public void setMemberNotices(int memberNotices) {
 		this.memberNotices = memberNotices;
 	}
     

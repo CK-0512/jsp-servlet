@@ -45,7 +45,7 @@ public class NoticeDAO {
 		// 리턴타입
 		int row = 0;
 		// 쿼리
-		String query = "select count(*) from notice where memberId = ?";
+		String query = "select count(*) from notice where memberId = ? and checkStatus = 0";
 
 		try {
 			conn = DBManager.getConnection();
@@ -154,7 +154,7 @@ public class NoticeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		// query
-		String sql = "update notice set checkStatus where id=?";
+		String sql = "update notice set checkStatus = 1 where id = ?";
 
 		try {
 			conn = DBManager.getConnection();

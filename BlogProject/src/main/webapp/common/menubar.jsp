@@ -74,22 +74,18 @@
 								<path stroke-linecap="round" stroke-linejoin="round"
 									stroke-width="2"
 									d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-							<span class="badge badge-xs badge-primary indicator-item">${rq.memberNotices.size() }</span>
+							<span class="badge badge-xs badge-primary indicator-item">${rq.memberNotices }</span>
 						</div>
 					</label>
 					<div tabindex="0"
 						class="mt-3 z-[1] card card-compact dropdown-content w-96 bg-base-100 shadow text-center">
 						<div class="card-body">
-							<c:if test="${rq.memberNotices.size() == 0 }">
+							<c:if test="${rq.memberNotices == 0 }">
 								<span class="font-semibold text-base">신규 알림이 없습니다.</span>
 							</c:if>
-							<c:if test="${rq.memberNotices.size() != 0 }">
-								<span class="font-semibold text-base">신규 알림이 ${rq.memberNotices.size() }개 있습니다.</span>
-								<c:forEach var="memberNotice" items="${rq.memberNotices }">
-									<div class="card-actions border-2">
-										<a href="${rq.memberNotices.noticeUrl }">${rq.memberNotices.message }</a>
-									</div>
-								</c:forEach>
+							<c:if test="${rq.memberNotices != 0 }">
+								<span class="font-semibold text-base">신규 알림이 ${rq.memberNotices }개 있습니다.</span>
+								<a href="/Notice?cmd=notice_list" type="button">보러 가기</a>
 							</c:if>
 						</div>
 					</div>

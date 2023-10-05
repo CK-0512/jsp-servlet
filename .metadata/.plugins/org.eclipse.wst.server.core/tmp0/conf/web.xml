@@ -4611,7 +4611,17 @@
 		<mime-type>application/vnd.handheld-entertainment+xml</mime-type>
 	</mime-mapping>
 
-	<!-- ==================== Default Welcome File List ===================== -->
+	<filter>
+		<filter-name>MyFilter</filter-name>
+		<filter-class>filter.MyFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>MyFilter</filter-name>
+		<url-pattern>/*</url-pattern> <!-- 적용할 URL 패턴 설정 -->
+	</filter-mapping>
+
+  <!-- ==================== Default Welcome File List ===================== -->
 	<!-- When a request URI refers to a directory, the default servlet looks -->
 	<!-- for a "welcome file" within that directory and, if present, to the -->
 	<!-- corresponding resource URI for display. -->
@@ -4631,15 +4641,5 @@
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-
-	<filter>
-		<filter-name>MyFilter</filter-name>
-		<filter-class>filter.MyFilter</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>MyFilter</filter-name>
-		<url-pattern>/*</url-pattern> <!-- 적용할 URL 패턴 설정 -->
-	</filter-mapping>
 
 </web-app>
