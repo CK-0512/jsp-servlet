@@ -1,4 +1,4 @@
-package service.article;
+package service.blog;
 
 import java.io.IOException;
 
@@ -7,19 +7,22 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.blog.BlogDAO;
+import model.blog.BlogDTO;
 import service.Action;
 
-public class ArticleDeleteAction implements Action {
+public class BlogViewAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nowpage = Integer.parseInt(request.getParameter("page"));
-		int id = Integer.parseInt(request.getParameter("id"));
 		
-		request.setAttribute("page", nowpage);
-		request.setAttribute("id", id);
+		BlogDAO dao = BlogDAO.getInstance();
+				
+		BlogDTO blog = dao.getBlogInformation();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/Article/article_delete.jsp");
+		request.setAttribute("blog", blog);
+		//forword
+		RequestDispatcher rd = request.getRequestDispatcher("/BlogInformation/blog_view.jsp");
 		rd.forward(request, response);
 
 

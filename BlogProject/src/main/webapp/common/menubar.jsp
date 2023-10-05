@@ -43,6 +43,7 @@
 				</label>
 				<ul tabindex="0"
 					class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-28">
+					<li><a href="/Article?cmd=article_list_all">전체글</a></li>
 					<li><a href="/Article?cmd=article_list&boardId=1">일상</a></li>
 					<li><a href="/Article?cmd=article_list&boardId=2">공부</a></li>
 					<li><a href="/Article?cmd=article_list&boardId=3">기업 정보</a></li>
@@ -55,7 +56,7 @@
 			</div>
 		</div>
 		<div class="navbar-center">
-			<a href="/Index?cmd=index.do" class="btn btn-active normal-case text-bold text-5xl italic mb-2">CK's BLOG</a>
+			<a href="/BlogInformation?cmd=blog_view" class="btn btn-active normal-case text-bold text-5xl italic mb-2">CK's BLOG</a>
 		</div>
 		<div class="navbar-end">
 			<div>
@@ -119,7 +120,7 @@
 							</c:when>
 							<c:otherwise>
 								<li><a class="items-center" href="/Member?cmd=member_list.do">회원관리</a></li>
-								<li><a class="items-center" href="/BlogInformation?cmd=information_modify.do">블로그수정</a></li>
+								<li><a class="items-center" href="/Index?cmd=index.jsp">블로그수정</a></li>
 							</c:otherwise>
 						</c:choose>
 						<li><a href="/Member?cmd=member_logout_pro.do">로그아웃</a></li>

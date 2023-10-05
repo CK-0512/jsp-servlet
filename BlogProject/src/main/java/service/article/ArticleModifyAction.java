@@ -20,10 +20,10 @@ public class ArticleModifyAction implements Action {
 		
 		ArticleDAO dao = ArticleDAO.getInstance();
 		
-		ArticleDTO board = dao.articleSelect(id);
+		ArticleDTO article = dao.articleSelect(id);
 		
 		request.setAttribute("page", nowpage);
-		request.setAttribute("board", board);
+		request.setAttribute("article", article);
 	
 		RequestDispatcher rd = request.getRequestDispatcher("/Article/article_modify.jsp");
 		rd.forward(request, response);

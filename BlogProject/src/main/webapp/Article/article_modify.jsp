@@ -3,14 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="pageTitle" value="Modify" />
-<%@ include file="../common/head.jsp" %>
+<%@ include file="../common/menubar.jsp" %>
 <%@ include file="../common/toastUIEditorLib.jsp" %>
 
-	<section class="mt-8">
+	<section class="mt-24">
 		<div class="container mx-auto">
-			<form action="/Article?cmd=article_modify_pro.do" method="POST" onsubmit="submitForm(this); return false;">
+			<form action="/Article?cmd=article_modify_pro" method="POST" onsubmit="submitForm(this); return false;">
 				<input type="hidden" name="id" value="${article.id }" />
 				<input type="hidden" name="body" />
+				<input type="hidden" name="page" value="${page }" />
 				<div class="table-box-type-1">
 					<table class="table">
 						<colgroup>

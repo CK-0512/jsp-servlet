@@ -52,8 +52,8 @@
 				<button class="btn btn-accent btn-sm" onclick="history.back();">뒤로가기</button>
 				
 				<c:if test="${article.memberId == rq.getLoginedMemberId() }">
-					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_modify&id=${article.id}">수정</a>
-					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_delete&id=${article.id }" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a>
+					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_modify&id=${article.id}&page=${page}">수정</a>
+					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_delete_pro&id=${article.id }&page=${page}" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a>
 				</c:if>
 			</div>
 		</div>
@@ -63,14 +63,15 @@
 		originalId = null;
 		originalForm = null;
 		
-		function replyModify_getForm(replyId, i) {
+		function replyModify_getForm(page, replyId, i) {
 			
 			if (originalForm != null) {
 				replyModify_cancle(originalId);
 			}
 			
-			$.get('../reply/getReplyContent', {
-				id : replyId
+			$.post('/Reply?cmd=reply_modify', {
+				id : replyId,
+				page : page
 			}, function(data){
 				let replyContent = $('#' + i);
 				
@@ -78,11 +79,12 @@
 				originalForm = replyContent.html();
 				
 				let addHtml = `
-					<form action="/Reply?cmd=reply_modify_pro.do" method="POST">
-						<input type="hidden" name="id" value="\${data.data1.id}"/>
+					<form action="/Reply?cmd=reply_modify_pro" method="POST">
+						<input type="hidden" name="id" value="\${data.id}"/>
+						<input type="hidden" name="page" value="\${data.page}"/>
 						<div class="mt-4 border border-gray-400 rounded-lg text-base p-4">
 							<div class="mb-2"><span>${rq.loginedMember.nickname }</span></div>
-							<textarea class="textarea textarea-accent w-full" name="body" placeholder="댓글을 남겨보세요">\${data.data1.body}</textarea>
+							<textarea class="textarea textarea-accent w-full" name="body" placeholder="댓글을 남겨보세요">\${data.body}</textarea>
 							<div class="mt-1 flex justify-end">
 								<a class="btn btn-accent btn-sm mr-2" onclick="replyModify_cancle(\${i});">취소</a>
 								<button class="btn btn-accent btn-sm">수정</button>
@@ -120,8 +122,8 @@
 							    	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
 							    </button>
 							    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-20">
-							        <li><a onclick="replyModify_getForm(${reply.id }, ${status.count });">수정</a></li>
-							        <li><a href="/Reply?cmd=reply_delete_pro&id=${reply.id }.do" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a></li>
+							        <li><a onclick="replyModify_getForm(${page }, ${reply.id }, ${status.count });">수정</a></li>
+							        <li><a href="/Reply?cmd=reply_delete_pro&id=${reply.id }&page=${page }" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a></li>
 						        </ul>
 						  	</div>
 					  	</c:if>
@@ -133,9 +135,9 @@
 			</c:forEach>
 			
 			<c:if test="${rq.loginedMemberId != 0 }">
-				<form action="/Reply?cmd=reply_write_pro.do" method="POST">
-					<input type="hidden" name="relTypeCode" value="article"/>
-					<input type="hidden" name="relId" value="${article.id }"/>
+				<form action="/Reply?cmd=reply_write_pro" method="POST">
+					<input type="hidden" name="page" value="\${page}"/>
+					<input type="hidden" name="articleId" value="${article.id }"/>
 					<div class="mt-4 border border-gray-400 rounded-lg text-base p-4">
 						<div class="mb-2"><span>${rq.loginedMember.nickname }</span></div>
 						<textarea class="textarea textarea-accent w-full" name="body" placeholder="댓글을 남겨보세요"></textarea>

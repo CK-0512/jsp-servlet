@@ -26,7 +26,7 @@ public class MemberJoinProAction implements Action {
 		member.setUserPass(request.getParameter("userPass"));
 		member.setEmail(request.getParameter("email"));
 		
-		int row = dao.memberWrite(member);
+		dao.memberWrite(member);
 		
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();

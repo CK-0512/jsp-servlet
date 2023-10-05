@@ -11,6 +11,7 @@ public class ArticleDTO {
 	private String updateDate;
 	private int hitCnt;
 	private int boardId;
+	private String boardName;
 	public int getId() {
 		return id;
 	}
@@ -70,6 +71,12 @@ public class ArticleDTO {
 	}
 	public void setWriterName(String writerName) {
 		this.writerName = writerName;
+	}
+	public String getBoardName() {
+		return boardName;
+	}
+	public void setBoardName(String boardName) {
+		this.boardName = boardName;
 	}
 	
 }

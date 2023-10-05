@@ -29,8 +29,7 @@ public class MemberLoginProAction implements Action {
 		if (rq.getLoginedMemberId() != 0) {
 			out.print("<script>");
 			out.print("alert('로그아웃 후 이용해주세요.');");
-			out.print("window.opener.history.back();");
-			out.print("self.close();");
+			out.print("history.back();");
 			out.print("</script>");
 		}
 		
@@ -44,7 +43,7 @@ public class MemberLoginProAction implements Action {
 			
 			out.print("<script>");
 			out.print("alert('로그인 성공');");
-			out.print("location.href='/';");
+			out.print("location.href='/BlogInformation?cmd=blog_view';");
 			out.print("</script>");
 			
 		} else if (row == 0) {

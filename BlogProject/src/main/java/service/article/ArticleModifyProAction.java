@@ -32,8 +32,7 @@ public class ArticleModifyProAction implements Action {
 		if(row==1) {
 			out.print("<script>");
 			out.print("alert('글이 수정되었습니다');");
-			out.print("window.opener.location.href='/Article?cmd=article_view.do&id="+article.getId()+"page="+ nowpage +"';");
-			out.print("self.close();");
+			out.print("location.href='/Article?cmd=article_view&id="+article.getId()+"&page="+ nowpage +"';");
 			out.print("</script>");
 		}else {
 			out.print("<script>");

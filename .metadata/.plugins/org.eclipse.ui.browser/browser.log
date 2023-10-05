@@ -201,3 +201,24 @@
 9월 08, 2023 10:05:52.665 [22556:2756:0908/100552.665:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
 9월 08, 2023 10:24:38.866 [22556:2756:0908/102438.865:ERROR:CONSOLE(1)] "Ignoring unauthorized client request from null", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
 9월 08, 2023 10:24:38.875 [22556:2756:0908/102438.875:ERROR:CONSOLE(1)] "Ignoring unauthorized client request from null", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+
+10월 04, 2023 09:43:03.652 NEW SESSION
+10월 04, 2023 09:43:03.652 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+10월 04, 2023 09:50:45.764 [12492:15232:1004/095045.763:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+10월 04, 2023 09:50:45.764 [12492:15232:1004/095045.764:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+10월 04, 2023 09:50:45.764 [12492:15232:1004/095045.764:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+10월 04, 2023 10:13:31.665 [12492:15232:1004/101331.664:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+10월 04, 2023 10:13:31.665 [12492:15232:1004/101331.665:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+10월 04, 2023 10:13:31.665 [12492:15232:1004/101331.665:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+10월 04, 2023 10:24:24.612 [12492:15232:1004/102424.612:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+10월 04, 2023 10:24:24.613 [12492:15232:1004/102424.612:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+10월 04, 2023 10:24:24.613 [12492:15232:1004/102424.613:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+10월 04, 2023 10:46:02.663 [12492:15232:1004/104602.663:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+10월 04, 2023 10:46:02.664 [12492:15232:1004/104602.664:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+10월 04, 2023 10:46:02.665 [12492:15232:1004/104602.664:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+10월 04, 2023 10:46:03.866 [12492:15232:1004/104603.866:ERROR:CONSOLE(1)] "Extension server error: Operation failed: http://localhost:8090/Index?cmd=index.do has no execution context", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+10월 04, 2023 10:47:09.200 [12492:15232:1004/104709.199:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+10월 04, 2023 10:48:03.335 [12492:15232:1004/104803.335:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+10월 04, 2023 10:49:16.819 [12492:15232:1004/104916.819:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+10월 04, 2023 10:49:16.820 [12492:15232:1004/104916.820:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+10월 04, 2023 10:49:16.821 [12492:15232:1004/104916.820:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)

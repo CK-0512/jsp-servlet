@@ -69,8 +69,6 @@ CREATE TABLE blogInformation
 	regDate date DEFAULT SYSDATE NOT NULL,
 	updateDate date DEFAULT SYSDATE NOT NULL,
 	introduction clob NOT NULL,
-	totVisitant number NOT NULL,
-	todayVisitant number NOT NULL,
 	PRIMARY KEY (regDate)
 );
 

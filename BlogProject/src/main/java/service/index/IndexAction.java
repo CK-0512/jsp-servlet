@@ -64,6 +64,30 @@ public class IndexAction implements Action {
 		}else {
 			pageSkip = PageIndex.pageListHan(nowpage, totpage, url, search, key);			
 		}
+		
+		for (ArticleDTO article : list) {
+			switch (article.getBoardId()) {
+				case 1 :
+					article.setBoardName("일상");
+					break;
+				case 2 :
+					article.setBoardName("공부");
+					break;
+				case 3:
+					article.setBoardName("기업 정보");
+					break;
+				case 4 :
+					article.setBoardName("구인 정보");
+					break;
+				case 5 :
+					article.setBoardName("일정표");
+					break;
+				case 6 :
+					article.setBoardName("질의 응답");
+					break;
+			}
+		}
+		
 		//jsp에서 사용될 값을 request 내장객체에 담기
 		request.setAttribute("page", nowpage);
 		request.setAttribute("totpage", totpage);

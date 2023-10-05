@@ -31,4 +31,6 @@
     <fullyQualifiedTypeName name="service.member.MemberLogoutProAction"/>
     <fullyQualifiedTypeName name="model.member.MemberDAO"/>
     <fullyQualifiedTypeName name="javax.servlet.Filter"/>
+    <fullyQualifiedTypeName name="model.blog.BlogDAO"/>
+    <fullyQualifiedTypeName name="model.reply.ReplyDAO"/>
 </qualifiedTypeNameHistroy>

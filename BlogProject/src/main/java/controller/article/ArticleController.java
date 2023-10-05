@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Action;
-import service.article.ArticleDeleteAction;
 import service.article.ArticleDeleteProAction;
 import service.article.ArticleListAction;
+import service.article.ArticleListAllAction;
 import service.article.ArticleModifyAction;
 import service.article.ArticleModifyProAction;
 import service.article.ArticleViewAction;
@@ -44,6 +44,8 @@ public class ArticleController extends HttpServlet {
 		
 		if(cmd.equals("article_list")) {
 			action = new ArticleListAction();
+		}else if(cmd.equals("article_list_all")) {//입력 폼
+			action = new ArticleListAllAction();
 		}else if(cmd.equals("article_write")) {//입력 폼
 			action = new ArticleWriteAction();
 		}else if(cmd.equals("article_write_pro")) {//입력 처리
@@ -54,8 +56,6 @@ public class ArticleController extends HttpServlet {
 			action = new ArticleModifyAction();
 		}else if(cmd.equals("article_modify_pro")) {
 			action = new ArticleModifyProAction();
-		}else if(cmd.equals("article_delete")) {
-			action = new ArticleDeleteAction();
 		}else if(cmd.equals("article_delete_pro")) {
 			action = new ArticleDeleteProAction();
 		}

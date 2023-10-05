@@ -1,6 +1,7 @@
 package service.article;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.article.ArticleDAO;
 import model.article.ArticleDTO;
+import model.reply.ReplyDAO;
+import model.reply.ReplyDTO;
 import service.Action;
 
 public class ArticleViewAction implements Action {
@@ -41,9 +44,12 @@ public class ArticleViewAction implements Action {
 		}
 				
 		ArticleDTO article = dao.articleSelect(id);
+		ReplyDAO rDao = ReplyDAO.getInstance();
+		List<ReplyDTO> replies = rDao.getReplies(id);
 		
 		request.setAttribute("page", nowpage);
 		request.setAttribute("article", article);
+		request.setAttribute("replies", replies);
 		//forword
 		RequestDispatcher rd = request.getRequestDispatcher("/Article/article_view.jsp");
 		rd.forward(request, response);

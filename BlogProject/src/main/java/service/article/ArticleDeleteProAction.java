@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.article.ArticleDAO;
+import model.article.ArticleDTO;
 import service.Action;
 
 public class ArticleDeleteProAction implements Action {
@@ -18,6 +19,7 @@ public class ArticleDeleteProAction implements Action {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		ArticleDAO dao = ArticleDAO.getInstance();
+		ArticleDTO article = dao.articleSelect(id);
 		int row = dao.articleDelete(id);
 
 		response.setContentType("text/html; charset=utf-8");
@@ -26,8 +28,7 @@ public class ArticleDeleteProAction implements Action {
 		if(row==1) {
 			out.print("<script>");
 			out.print("alert('글이삭제되었습니다');");
-			out.print("window.opener.location.href='/Article?cmd=article_list.do&page="+ nowpage +"';");
-			out.print("self.close();");
+			out.print("location.href='/Article?cmd=article_list&boardId="+article.getBoardId()+"page="+ nowpage +"';");
 			out.print("</script>");
 		}else {
 			out.print("<script>");

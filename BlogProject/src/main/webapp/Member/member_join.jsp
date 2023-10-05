@@ -70,7 +70,6 @@
 		form.submit();
 	}
 	
-	/*
 	function loginIdDupChk(el) {
 		
 		let loginIdDupChkMsg = $('#loginIdDupChkMsg');
@@ -84,20 +83,19 @@
 			return;
 		}
 		
-		$.get('loginIdDupChk', {
-			loginId : el.value
+		$.get('/Member?cmd=member_idChk.do', {
+			userId : el.value
 		}, function(data){
 			if (data.success) {
-				loginIdDupChkMsg.html(`<span class="text-green-500">\${data.data1}은(는) \${data.msg}</span>`);
-				validLoginId = data.data1;
+				loginIdDupChkMsg.html(`<span class="text-green-500">\해당 아이디는 사용 가능합니다.</span>`);
+				validLoginId = data.loginId;
 			} else {
-				loginIdDupChkMsg.html(`<span class="text-red-500">\${data.data1}은(는) \${data.msg}</span>`);
+				loginIdDupChkMsg.html(`<span class="text-red-500">\해당 아이디는 이미 존재하는 아이디입니다.</span>`);
 				validLoginId = '';
 			}
 			
 		}, 'json')
 	}
-	*/
 </script>
 
 <section>

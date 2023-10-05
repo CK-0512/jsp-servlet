@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Rq.Rq;
 import model.article.ArticleDAO;
 import model.article.ArticleDTO;
+import model.blog.BlogDAO;
 import service.Action;
 
 public class ArticleWriteProAction implements Action {
@@ -22,15 +23,23 @@ public class ArticleWriteProAction implements Action {
 		ArticleDTO article = new ArticleDTO();
 		Rq rq = new Rq(request, response);
 		
-		int nowpage = Integer.parseInt(request.getParameter("page"));
-		
 		article.setTitle(request.getParameter("title"));
 		article.setBody(request.getParameter("body"));
-		article.setBoardId(Integer.parseInt(request.getParameter("boardId")));
+		if (request.getParameter("boardId") == null) {
+			article.setBoardId(6);
+		}
+		else 
+			article.setBoardId(Integer.parseInt(request.getParameter("boardId")));
 		article.setMemberId(rq.getLoginedMemberId());
-		article.setMemberType(rq.getLoginedMember().getAuthLevel());
+		int memberType = 0;
+		if (rq.getLoginedMemberId() != 0) memberType = 1;
+		article.setMemberType(memberType);
 		
 		int row = dao.articleWrite(article);
+		if(row == 1) {
+			BlogDAO blog = BlogDAO.getInstance();
+			blog.updateBlog();
+		}
 		
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -38,7 +47,7 @@ public class ArticleWriteProAction implements Action {
 		if(row==1) {
 			out.print("<script>");
 			out.print("alert('글이 생성되었습니다');");
-			out.print("location.href='/Article?cmd=article_list&page="+ nowpage +"';");
+			out.print("location.href='/Article?cmd=article_list_all';");
 			out.print("</script>");
 		}else {
 			out.print("<script>");

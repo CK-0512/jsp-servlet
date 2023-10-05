@@ -30,7 +30,7 @@ public class MemberLogoutProAction implements Action {
 		rq.logout();
 		out.print("<script>");
 		out.print("alert('정상적으로 로그아웃 되었습니다.');");
-		out.print("location.href='/';");
+		out.print("location.href='/BlogInformation?cmd=blog_view';");
 		out.print("</script>");
 
 	}

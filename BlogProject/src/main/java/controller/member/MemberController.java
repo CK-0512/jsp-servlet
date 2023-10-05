@@ -14,6 +14,7 @@ import service.member.MemberFindIdAction;
 import service.member.MemberFindIdProAction;
 import service.member.MemberFindPassAction;
 import service.member.MemberFindPassProAction;
+import service.member.MemberIdChkAction;
 import service.member.MemberJoinAction;
 import service.member.MemberJoinProAction;
 import service.member.MemberListAction;
@@ -53,6 +54,8 @@ public class MemberController extends HttpServlet {
 		
 		if(cmd.equals("member_list.do")) {
 			action = new MemberListAction();
+		}else if(cmd.equals("member_idChk.do")) {
+			action = new MemberIdChkAction();
 		}else if(cmd.equals("member_join.do")) {
 			action = new MemberJoinAction();
 		}else if(cmd.equals("member_join_pro.do")) {

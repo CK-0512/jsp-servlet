@@ -1,4 +1,4 @@
-package controller.index;
+package controller.reply;
 
 import java.io.IOException;
 
@@ -9,19 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Action;
-import service.index.IndexAction;
+import service.reply.ReplyDeleteProAction;
+import service.reply.ReplyModifyAction;
+import service.reply.ReplyModifyProAction;
+import service.reply.ReplyWriteProAction;
 
 /**
  * Servlet implementation class BoardController
  */
-@WebServlet("/Index")
-public class IndexController extends HttpServlet {
+@WebServlet("/Reply")
+public class ReplyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexController() {
+    public ReplyController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,8 +38,14 @@ public class IndexController extends HttpServlet {
 		
 		Action action = null;
 		
-		if(cmd.equals("index.do")) {
-			action = new IndexAction();
+		if(cmd.equals("reply_modify")) {//입력 폼
+			action = new ReplyModifyAction();
+		}else if(cmd.equals("reply_write_pro")) {//입력 처리
+			action = new ReplyWriteProAction();
+		}else if(cmd.equals("reply_modify_pro")) {
+			action = new ReplyModifyProAction();
+		}else if(cmd.equals("reply_delete_pro")) {
+			action = new ReplyDeleteProAction();
 		}
 		
 		action.execute(request, response);
