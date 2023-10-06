@@ -55,6 +55,10 @@
 					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_modify&id=${article.id}&page=${page}">수정</a>
 					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_delete_pro&id=${article.id }&page=${page}" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a>
 				</c:if>
+				<c:if test="${article.memberType == 2 }">
+					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_non&id=${article.id}&page=${page}&btnType=1">수정</a>
+					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_non&id=${article.id}&page=${page}&btnType=2">삭제</a>
+				</c:if>
 			</div>
 		</div>
 	</section>

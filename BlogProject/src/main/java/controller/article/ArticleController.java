@@ -13,9 +13,14 @@ import service.article.ArticleDeleteProAction;
 import service.article.ArticleListAction;
 import service.article.ArticleListAllAction;
 import service.article.ArticleModifyAction;
+import service.article.ArticleModifyNonAction;
+import service.article.ArticleModifyNonProAction;
 import service.article.ArticleModifyProAction;
+import service.article.ArticleNonAction;
 import service.article.ArticleViewAction;
 import service.article.ArticleWriteAction;
+import service.article.ArticleWriteNonAction;
+import service.article.ArticleWriteNonProAction;
 import service.article.ArticleWriteProAction;
 
 /**
@@ -48,12 +53,22 @@ public class ArticleController extends HttpServlet {
 			action = new ArticleListAllAction();
 		}else if(cmd.equals("article_write")) {//입력 폼
 			action = new ArticleWriteAction();
+		}else if(cmd.equals("article_non")) {//입력 폼
+			action = new ArticleNonAction();
+		}else if(cmd.equals("article_write_non")) {//입력 폼
+			action = new ArticleWriteNonAction();
+		}else if(cmd.equals("article_write_non_pro")) {//입력 처리
+			action = new ArticleWriteNonProAction();
 		}else if(cmd.equals("article_write_pro")) {//입력 처리
 			action = new ArticleWriteProAction();
 		}else if(cmd.equals("article_view")) {
 			action = new ArticleViewAction();
 		}else if(cmd.equals("article_modify")) {
 			action = new ArticleModifyAction();
+		}else if(cmd.equals("article_modify_non")) {
+			action = new ArticleModifyNonAction();
+		}else if(cmd.equals("article_modify_non_pro")) {
+			action = new ArticleModifyNonProAction();
 		}else if(cmd.equals("article_modify_pro")) {
 			action = new ArticleModifyProAction();
 		}else if(cmd.equals("article_delete_pro")) {

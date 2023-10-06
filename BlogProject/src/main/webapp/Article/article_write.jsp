@@ -27,7 +27,7 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-							<span class="text-gray-700 font-bold text-2xl">질문 작성</span>
+							<span class="text-gray-700 font-bold text-2xl">질문 등록</span>
 						</c:otherwise>
 					</c:choose>
 					<table class="table">

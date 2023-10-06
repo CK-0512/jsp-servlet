@@ -37,7 +37,7 @@ public class NoticeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt, rs);
+			DBManager.close(conn, pstmt);
 		}
 	}
 

@@ -521,13 +521,13 @@ public class ArticleDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int articleId = 0;
-		String sql = "SELECT id FROM article WHERE ROWNUM <= 1 ORDER BY regDate DESC";
+		String sql = "SELECT id FROM article WHERE ROWNUM <= 1 ORDER BY id desc";
 
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
+			if (rs.next()) {
 				articleId = rs.getInt(1);
 			}
 		} catch (Exception e) {

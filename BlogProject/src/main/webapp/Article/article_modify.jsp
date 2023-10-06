@@ -21,33 +21,27 @@
 							<tr>
 								<th>번호</th>
 								<td><span class="badge badge-neutral">${article.id }</span></td>
-							</tr>
-							<tr>
 								<th>작성일</th>
 								<td>${article.regDate }</td>
 							</tr>
 							<tr>
-								<th>수정일</th>
-								<td>${article.updateDate }</td>
-							</tr>
-							<tr>
 								<th>작성자</th>
-								<td>${article.writerName }</td>
+								<td colspan="3">${article.writerName }</td>
 							</tr>
 							<tr>
 								<th>제목</th>
-								<td><input class="input input-bordered input-accent w-full" type="text" name="title" value="${article.title }"/></td>
+								<td colspan="3"><input class="input input-bordered input-accent w-full" type="text" name="title" value="${article.title }"/></td>
 							</tr>
 							<tr>
 								<th>내용</th>
-								<td>
+								<td colspan="3">
 									<div class="toast-ui-editor">
 								    	<script type="text/x-template">${article.body }</script>
 								    </div>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2"><button class="btn btn-accent btn-sm">수정</button></td>
+								<td colspan="4"><button class="btn btn-accent btn-sm">수정</button></td>
 							</tr>
 						</tbody>
 					</table>

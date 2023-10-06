@@ -27,8 +27,8 @@ public class ArticleDeleteProAction implements Action {
 		
 		if(row==1) {
 			out.print("<script>");
-			out.print("alert('글이삭제되었습니다');");
-			out.print("location.href='/Article?cmd=article_list&boardId="+article.getBoardId()+"page="+ nowpage +"';");
+			out.print("alert('글이 삭제되었습니다');");
+			out.print("location.href='/Article?cmd=article_list&boardId="+article.getBoardId()+"&page="+ nowpage +"';");
 			out.print("</script>");
 		}else {
 			out.print("<script>");

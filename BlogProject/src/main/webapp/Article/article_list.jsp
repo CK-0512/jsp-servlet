@@ -28,16 +28,23 @@
 				<span>작성일 : ${article.regDate }</span>
 			</div>
 		</c:forEach>
-		<c:if test="${rq.loginedMember.authLevel != 0 }">
+		<c:if test="${rq.loginedMemberId != 0 }">
+			<c:if test="${rq.loginedMember.authLevel != 0 }">
+				<div class="mt-2 flex justify-end">
+					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_write&page=${page }">질문글 작성</a>
+				</div>
+			</c:if>
+			<c:if test="${rq.loginedMember.authLevel == 0 }">
+				<div class="mt-2 flex justify-end">
+					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_write&page=${page }">글 작성</a>
+				</div>
+			</c:if>	
+		</c:if>
+		<c:if test="${rq.loginedMemberId == 0 }">
 			<div class="mt-2 flex justify-end">
-				<a class="btn btn-accent btn-sm" href="/Article?cmd=article_write&page=${page }">질문글 작성</a>
+				<a class="btn btn-accent btn-sm" href="/Article?cmd=article_write_non&page=${page }">질문글 작성</a>
 			</div>
 		</c:if>
-		<c:if test="${rq.loginedMember.authLevel == 0 }">
-			<div class="mt-2 flex justify-end">
-				<a class="btn btn-accent btn-sm" href="/Article?cmd=article_write&page=${page }">글 작성</a>
-			</div>
-		</c:if>	
 		<div align="center">
 	        <table width="700" border="0" cellspacing="0" cellpadding="5">
 	          <tr>&nbsp;</tr><tr>

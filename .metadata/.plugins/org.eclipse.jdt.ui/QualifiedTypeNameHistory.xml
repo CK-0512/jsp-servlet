@@ -11,7 +11,6 @@
     <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
     <fullyQualifiedTypeName name="model.pds.PdsDAO"/>
     <fullyQualifiedTypeName name="java.io.File"/>
-    <fullyQualifiedTypeName name="model.util.DBManager"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="model.boardreply.BoardReplyDAO"/>
     <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
@@ -33,4 +32,8 @@
     <fullyQualifiedTypeName name="model.blog.BlogDAO"/>
     <fullyQualifiedTypeName name="model.reply.ReplyDAO"/>
     <fullyQualifiedTypeName name="model.notice.NoticeDAO"/>
+    <fullyQualifiedTypeName name="model.article.ArticleDAO"/>
+    <fullyQualifiedTypeName name="model.nonMember.NonMemberDAO"/>
+    <fullyQualifiedTypeName name="model.util.DBManager"/>
+    <fullyQualifiedTypeName name="model.nonMember.NonMemberDTO"/>
 </qualifiedTypeNameHistroy>

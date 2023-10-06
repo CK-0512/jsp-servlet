@@ -106,6 +106,7 @@ CREATE TABLE member
 CREATE TABLE non_member
 (
 	id number NOT NULL UNIQUE,
+	regDate date DEFAULT SYSDATE NOT NULL,
 	nickname varchar2(10) NOT NULL,
 	pass varchar2(20) NOT NULL,
 	-- 1 = 질문글, 2 = 댓글
