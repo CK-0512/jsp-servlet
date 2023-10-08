@@ -3,12 +3,7 @@ package model.nonMember;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import model.member.MemberDTO;
-import model.member.MemberDTO;
 import model.util.DBManager;
 
 public class NonMemberDAO {
@@ -45,7 +40,7 @@ public class NonMemberDAO {
 		}
 	}
 
-	public NonMemberDTO NonMemberSelect(int articleId) {
+	public NonMemberDTO NonMemberSelectOnArticle(int articleId) {
 
 		conn = null;
 		pstmt = null;
@@ -58,7 +53,36 @@ public class NonMemberDAO {
 			pstmt.setInt(1, articleId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				nonMember.setArticleId(articleId);
+				nonMember.setArticleId(rs.getInt("articleId"));
+				nonMember.setId(rs.getInt("id"));
+				nonMember.setNickname(rs.getString("nickname"));
+				nonMember.setPass(rs.getString("pass"));
+				nonMember.setRegDate(rs.getString("regDate"));
+				nonMember.setType(rs.getInt("type"));
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return nonMember;
+	}
+	
+	public NonMemberDTO NonMemberSelectOnReply(int replyId) {
+		
+		conn = null;
+		pstmt = null;
+		rs = null;
+		NonMemberDTO nonMember = new NonMemberDTO();
+		String query = "select N.* from non_member N inner join reply R on N.articleId = R.articleId where R.id = ? and N.type = 2";
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, replyId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				nonMember.setArticleId(rs.getInt("articleId"));
 				nonMember.setId(rs.getInt("id"));
 				nonMember.setNickname(rs.getString("nickname"));
 				nonMember.setPass(rs.getString("pass"));

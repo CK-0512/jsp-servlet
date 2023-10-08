@@ -269,7 +269,7 @@ END;
 /* Comments */
 
 COMMENT ON COLUMN article.memberId IS '1 = 본인, 비회원';
-COMMENT ON COLUMN article.membertype IS '0 = 본인, 1 = 회원, 2 = 비회원';
+COMMENT ON COLUMN article.membertype IS '1 = 회원, 2 = 비회원';
 COMMENT ON COLUMN board.delStatus IS '0 = 존재, 1 = 삭제';
 COMMENT ON COLUMN member.authLevel IS '0 = 본인, 1 = 일반회원';
 COMMENT ON COLUMN member.delStatus IS '0 = 존재, 1 = 삭제됨';

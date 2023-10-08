@@ -32,8 +32,10 @@
     <fullyQualifiedTypeName name="model.blog.BlogDAO"/>
     <fullyQualifiedTypeName name="model.reply.ReplyDAO"/>
     <fullyQualifiedTypeName name="model.notice.NoticeDAO"/>
-    <fullyQualifiedTypeName name="model.article.ArticleDAO"/>
-    <fullyQualifiedTypeName name="model.nonMember.NonMemberDAO"/>
     <fullyQualifiedTypeName name="model.util.DBManager"/>
     <fullyQualifiedTypeName name="model.nonMember.NonMemberDTO"/>
+    <fullyQualifiedTypeName name="model.article.ArticleDAO"/>
+    <fullyQualifiedTypeName name="model.nonMember.NonMemberDAO"/>
+    <fullyQualifiedTypeName name="java.text.ParseException"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
 </qualifiedTypeNameHistroy>

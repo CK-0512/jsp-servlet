@@ -5,6 +5,7 @@ public class ReplyDTO {
 	private String regDate;
 	private String updateDate;
 	private int memberId;
+	private int memberType;
 	private int articleId;
 	private String body;
 	
@@ -68,6 +69,14 @@ public class ReplyDTO {
 
 	public void setWriterName(String writerName) {
 		this.writerName = writerName;
+	}
+
+	public int getMemberType() {
+		return memberType;
+	}
+
+	public void setMemberType(int memberType) {
+		this.memberType = memberType;
 	}
 	
 	

@@ -26,33 +26,34 @@ public class ReplyDAO {
 
 	public List<ReplyDTO> getReplies(int id) {
 		// 리턴타입
-				List<ReplyDTO> list = new ArrayList<>();
-				// 쿼리
-				String query = "select R.*, M.nickname as writerName from reply R inner join member M on R.memberId = M.id where r.articleId = ? order by r.regdate desc";
+		List<ReplyDTO> list = new ArrayList<>();
+		// 쿼리
+		String query = "select R.*, M.nickname as writerName from reply R inner join member M on R.memberId = M.id where r.articleId = ? order by r.regdate desc";
 
-				try {
-					conn = DBManager.getConnection();
-					pstmt = conn.prepareStatement(query);
-					pstmt.setInt(1, id);
-					rs = pstmt.executeQuery();
-					ReplyDTO reply = null;
-					while (rs.next()) {
-						reply = new ReplyDTO();
-						reply.setId(rs.getInt("id"));
-						reply.setMemberId(rs.getInt("memberId"));
-						reply.setWriterName(rs.getString("writerName"));
-						reply.setBody(rs.getString("body"));
-						reply.setRegDate(rs.getString("regDate"));
-						reply.setUpdateDate(rs.getString("updateDate"));
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			ReplyDTO reply = null;
+			while (rs.next()) {
+				reply = new ReplyDTO();
+				reply.setId(rs.getInt("id"));
+				reply.setMemberId(rs.getInt("memberId"));
+				reply.setMemberType(rs.getInt("memberType"));
+				reply.setWriterName(rs.getString("writerName"));
+				reply.setBody(rs.getString("body"));
+				reply.setRegDate(rs.getString("regDate"));
+				reply.setUpdateDate(rs.getString("updateDate"));
 
-						list.add(reply);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					DBManager.close(conn, pstmt, rs);
-				}
-				return list;
+				list.add(reply);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return list;
 	}
 
 	public int replyWrite(ReplyDTO reply) {
@@ -61,7 +62,7 @@ public class ReplyDAO {
 		// 리터타입
 		int row = 0;
 		// query
-		String sql = "insert into reply(memberId,body,articleId) values(?, ?, ?)";
+		String sql = "insert into reply(memberId,body,articleId,memberType) values(?, ?, ?, ?)";
 
 		try {
 			conn = DBManager.getConnection();
@@ -69,6 +70,7 @@ public class ReplyDAO {
 			pstmt.setString(2, reply.getBody());
 			pstmt.setInt(3, reply.getArticleId());
 			pstmt.setInt(1, reply.getMemberId());
+			pstmt.setInt(4, reply.getMemberType());
 
 			row = pstmt.executeUpdate();
 
@@ -103,6 +105,7 @@ public class ReplyDAO {
 			while (rs.next()) {
 				reply.setId(rs.getInt("id"));
 				reply.setMemberId(rs.getInt("memberId"));
+				reply.setMemberType(rs.getInt("memberType"));
 				reply.setWriterName(rs.getString("writerName"));
 				reply.setRegDate(rs.getString("regDate"));
 				reply.setUpdateDate(rs.getString("updateDate"));

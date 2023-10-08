@@ -20,7 +20,7 @@
 						<tbody>
 							<tr>
 								<th>닉네임</th>
-								<td><input class="input input-bordered input-accent w-full" type="text" name="nickname" placeholder="닉네임을 입력해주세요" /></td>
+								<td><input class="input input-bordered input-accent w-full" type="text" name="nickname" placeholder="닉네임을 입력해주세요" value="ㅇㅇ" /></td>
 								<th>비밀번호</th>
 								<td><input class="input input-bordered input-accent w-full" type="text" name="pass" placeholder="비밀번호를 입력해주세요" /></td>
 							</tr>

@@ -31,6 +31,7 @@ public class ReplyWriteProAction implements Action {
 		reply.setBody(request.getParameter("body"));
 		reply.setArticleId(articleId);
 		reply.setMemberId(rq.getLoginedMemberId());
+		reply.setMemberType(1);
 		
 		int row = dao.replyWrite(reply);
 		

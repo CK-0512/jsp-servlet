@@ -88,15 +88,13 @@ public class BlogDAO {
 	public void updateBlog() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		int row = 0;
 		// query
 		String sql = "update article set updateDate=sysdate";
 
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-
-			row = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();

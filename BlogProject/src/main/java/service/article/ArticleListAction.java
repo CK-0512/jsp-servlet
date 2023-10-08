@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.article.ArticleDAO;
 import model.article.ArticleDTO;
+import model.nonMember.NonMemberDAO;
+import model.nonMember.NonMemberDTO;
 import model.util.PageIndex;
 import service.Action;
 
@@ -76,6 +78,14 @@ public class ArticleListAction implements Action {
 			list = dao.articleList(startpage, endpage, boardId);
 		} else {
 			list = dao.articleList(search, key, startpage, endpage, boardId);
+		}
+		
+		for (ArticleDTO article : list) {
+			if (article.getMemberType() == 2) {
+				NonMemberDAO ndao = NonMemberDAO.getInstance();
+				NonMemberDTO non = ndao.NonMemberSelectOnArticle(article.getId());
+				article.setWriterName(non.getNickname());
+			}
 		}
 
 		// 페이지 처리

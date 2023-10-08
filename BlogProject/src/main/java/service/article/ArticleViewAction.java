@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.article.ArticleDAO;
 import model.article.ArticleDTO;
+import model.nonMember.NonMemberDAO;
+import model.nonMember.NonMemberDTO;
 import model.reply.ReplyDAO;
 import model.reply.ReplyDTO;
 import service.Action;
@@ -47,8 +49,20 @@ public class ArticleViewAction implements Action {
 		}
 				
 		ArticleDTO article = dao.articleSelect(id);
+		if (article.getMemberType() == 2) {
+			NonMemberDAO ndao = NonMemberDAO.getInstance();
+			NonMemberDTO non = ndao.NonMemberSelectOnArticle(article.getId());
+			article.setWriterName(non.getNickname());
+		}
 		ReplyDAO rDao = ReplyDAO.getInstance();
 		List<ReplyDTO> replies = rDao.getReplies(id);
+		for (ReplyDTO reply : replies) {
+			if (reply.getMemberType() == 2) {
+				NonMemberDAO ndao = NonMemberDAO.getInstance();
+				NonMemberDTO non = ndao.NonMemberSelectOnReply(reply.getId());
+				reply.setWriterName(non.getNickname());
+			}
+		}
 		
 		request.setAttribute("page", nowpage);
 		request.setAttribute("article", article);

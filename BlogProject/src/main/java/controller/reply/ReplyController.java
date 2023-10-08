@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Action;
+import service.reply.ReplyDeleteNonProAction;
 import service.reply.ReplyDeleteProAction;
 import service.reply.ReplyModifyAction;
 import service.reply.ReplyModifyProAction;
+import service.reply.ReplyWriteNonProAction;
 import service.reply.ReplyWriteProAction;
 
 /**
@@ -42,10 +44,14 @@ public class ReplyController extends HttpServlet {
 			action = new ReplyModifyAction();
 		}else if(cmd.equals("reply_write_pro")) {//입력 처리
 			action = new ReplyWriteProAction();
+		}else if(cmd.equals("reply_write_non_pro")) {//입력 처리
+			action = new ReplyWriteNonProAction();
 		}else if(cmd.equals("reply_modify_pro")) {
 			action = new ReplyModifyProAction();
 		}else if(cmd.equals("reply_delete_pro")) {
 			action = new ReplyDeleteProAction();
+		}else if(cmd.equals("reply_delete_non_pro")) {
+			action = new ReplyDeleteNonProAction();
 		}
 		
 		action.execute(request, response);
