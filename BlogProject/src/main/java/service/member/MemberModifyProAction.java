@@ -30,8 +30,7 @@ public class MemberModifyProAction implements Action {
 		
 		out.print("<script>");
 		out.print("alert('회원정보 수정이 완료되었습니다.');");
-		out.print("window.opener.location.href='/Member?cmd=member_modify.do';");
-		out.print("self.close();");
+		out.print("location.href='/Member?cmd=member_modify.do';");
 		out.print("</script>");
 
 

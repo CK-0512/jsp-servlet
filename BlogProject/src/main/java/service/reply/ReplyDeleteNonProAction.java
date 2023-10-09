@@ -28,11 +28,14 @@ public class ReplyDeleteNonProAction implements Action {
 		NonMemberDAO ndao = NonMemberDAO.getInstance();
 		NonMemberDTO non = new NonMemberDTO();
 		non = ndao.NonMemberSelectOnReply(reply.getId());
+		System.out.println(non.getPass());
+		System.out.println(request.getParameter("pass"));
 		if (non.getPass() != request.getParameter("pass")) {
 			out.print("<script>");
 			out.print("alert('비밀번호 불일치');");
-			out.print("history.back()");
-			out.print("</script>");	
+			out.print("history.back();");
+			out.print("</script>");
+			return;
 		}
 
 		int row = dao.replyDelete(id);
@@ -46,7 +49,7 @@ public class ReplyDeleteNonProAction implements Action {
 		}else {
 			out.print("<script>");
 			out.print("alert('오류');");
-			out.print("history.back()");
+			out.print("history.back();");
 			out.print("</script>");			
 		}
 

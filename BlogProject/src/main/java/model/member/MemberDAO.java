@@ -161,7 +161,7 @@ public class MemberDAO {
 		int row = 0;
 		try {
 			conn = DBManager.getConnection();
-			query = "update member set nicknickname = ?, email = ?";
+			query = "update member set nickname = ?, email = ?";
 			query = query + " where id = ?";
 			pstmt = conn.prepareStatement(query);
 

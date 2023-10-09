@@ -40,7 +40,7 @@ public class ArticleModifyNonProAction implements Action {
 		}else {
 			out.print("<script>");
 			out.print("alert('오류');");
-			out.print("history.back()");
+			out.print("history.back();");
 			out.print("</script>");			
 		}
 

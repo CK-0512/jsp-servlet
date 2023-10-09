@@ -27,7 +27,6 @@
     <fullyQualifiedTypeName name="service.member.MemberPassModifyAction"/>
     <fullyQualifiedTypeName name="service.member.MemberPassModifyProAction"/>
     <fullyQualifiedTypeName name="service.member.MemberLogoutProAction"/>
-    <fullyQualifiedTypeName name="model.member.MemberDAO"/>
     <fullyQualifiedTypeName name="javax.servlet.Filter"/>
     <fullyQualifiedTypeName name="model.blog.BlogDAO"/>
     <fullyQualifiedTypeName name="model.reply.ReplyDAO"/>
@@ -38,4 +37,5 @@
     <fullyQualifiedTypeName name="model.nonMember.NonMemberDAO"/>
     <fullyQualifiedTypeName name="java.text.ParseException"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="model.member.MemberDAO"/>
 </qualifiedTypeNameHistroy>

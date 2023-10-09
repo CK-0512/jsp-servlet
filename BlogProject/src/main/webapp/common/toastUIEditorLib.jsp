@@ -221,8 +221,8 @@
 	    const theme = localStorage.getItem('theme') ?? "light";
 	    
 	    const editor = new toastui.Editor({
-	   	  el: node ,
-		  initialEditType: 'WYSIWYG',
+	   	  el: node,
+		  initialEditType: 'wysiwyg',
 		  previewStyle: 'vertical',
 		  initialValue: initialValue,
 		  height:'600px',
@@ -246,6 +246,7 @@
 
 	    $node.data('data-toast-editor', editor);
 	  });
+
 	}
 
 	function ToastEditorView__init() {

@@ -30,8 +30,7 @@ public class MemberFindPassProAction implements Action {
 		
 		out.print("<script>");
 		out.print("alert('회원님의 비밀번호는 " + member.getUserPass() + " 입니다.');");
-		out.print("window.opener.location.href='/Member?cmd=member_login.do';");
-		out.print("self.close();");
+		out.print("location.href='/Member?cmd=member_login.do';");
 		out.print("</script>");
 	}
 

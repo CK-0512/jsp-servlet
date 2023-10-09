@@ -26,12 +26,12 @@ public class BlogModifyProAction implements Action {
 		if(row==1) {
 			out.print("<script>");
 			out.print("alert('소개글이 수정되었습니다');");
-			out.print("location.href='/BlogInformation?cmd=blog_view");
+			out.print("location.href='/BlogInformation?cmd=blog_view';");
 			out.print("</script>");
 		}else {
 			out.print("<script>");
 			out.print("alert('오류');");
-			out.print("history.back()");
+			out.print("history.back();");
 			out.print("</script>");			
 		}
 

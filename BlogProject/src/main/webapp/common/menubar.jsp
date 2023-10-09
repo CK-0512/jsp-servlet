@@ -111,12 +111,11 @@
 					<c:if test="${rq.getLoginedMemberId() != 0}">
 						<c:choose>
 							<c:when test="${rq.getLoginedMember().authLevel != 0 }">
-								<li><a class="items-center" href="/Member?cmd=member_detail.do">내정보</a></li>
 								<li><a href="/Member?cmd=member_modify.do">정보수정</a></li>
 							</c:when>
 							<c:otherwise>
 								<li><a class="items-center" href="/Member?cmd=member_list.do">회원관리</a></li>
-								<li><a class="items-center" href="/Index?cmd=index.jsp">블로그수정</a></li>
+								<li><a class="items-center" href="/BlogInformation?cmd=blog_modify">블로그수정</a></li>
 							</c:otherwise>
 						</c:choose>
 						<li><a href="/Member?cmd=member_logout_pro.do">로그아웃</a></li>

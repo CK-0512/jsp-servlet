@@ -23,10 +23,6 @@ import service.member.MemberLoginProAction;
 import service.member.MemberLogoutProAction;
 import service.member.MemberModifyAction;
 import service.member.MemberModifyProAction;
-import service.member.MemberPassChkAction;
-import service.member.MemberPassChkProAction;
-import service.member.MemberPassModifyAction;
-import service.member.MemberPassModifyProAction;
 
 /**
  * Servlet implementation class BoardController
@@ -78,16 +74,8 @@ public class MemberController extends HttpServlet {
 			action = new MemberFindIdProAction();
 		}else if(cmd.equals("member_findPass.do")) {
 			action = new MemberFindPassAction();
-		}else if(cmd.equals("member_findPass.do")) {
+		}else if(cmd.equals("member_findPass_pro.do")) {
 			action = new MemberFindPassProAction();
-		}else if(cmd.equals("member_passChk.do")) {
-			action = new MemberPassChkAction();
-		}else if(cmd.equals("member_passChk_pro.do")) {
-			action = new MemberPassChkProAction();
-		}else if(cmd.equals("member_passModify.do")) {
-			action = new MemberPassModifyAction();
-		}else if(cmd.equals("member_passModify_pro.do")) {
-			action = new MemberPassModifyProAction();
 		}
 		
 		action.execute(request, response);

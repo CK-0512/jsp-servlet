@@ -22,10 +22,10 @@
 					<c:if test="${boardName != null }">
 						<span class="border-r-2 pr-2 py-5 border-blue-100 font-bold">${boardName }</span>
 					</c:if>
-					<span>조회수 : ${article.hitCnt }</span>
+					<span>작성자 : ${article.writerName }</span>
 				</div>
 				<a href="/Article?cmd=article_view&id=${article.id }&page=${page }" class="text-lg">${article.title }</a>
-				<span>작성일 : ${article.regDate }</span>
+				<span>작성일 : ${article.regDate.substring(0, 10) }</span>
 			</div>
 		</c:forEach>
 		<c:if test="${rq.loginedMemberId != 0 }">

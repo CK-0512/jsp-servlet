@@ -26,8 +26,7 @@ public class MemberFindIdProAction implements Action {
 		
 		out.print("<script>");
 		out.print("alert('회원님의 아이디는 " + member.getUserid() + " 입니다.');");
-		out.print("window.opener.location.href='/Member?cmd=member_login.do';");
-		out.print("self.close();");
+		out.print("location.href='/Member?cmd=member_login.do';");
 		out.print("</script>");
 	}
 

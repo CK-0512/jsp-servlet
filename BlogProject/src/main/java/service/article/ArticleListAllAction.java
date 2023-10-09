@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.article.ArticleDAO;
 import model.article.ArticleDTO;
+import model.member.MemberDAO;
+import model.member.MemberDTO;
 import model.nonMember.NonMemberDAO;
 import model.nonMember.NonMemberDTO;
 import model.util.PageIndex;
@@ -93,6 +95,10 @@ public class ArticleListAllAction implements Action {
 				NonMemberDAO ndao = NonMemberDAO.getInstance();
 				NonMemberDTO non = ndao.NonMemberSelectOnArticle(article.getId());
 				article.setWriterName(non.getNickname());
+			} else {
+				MemberDAO mdao = MemberDAO.getInstance();
+				MemberDTO member = mdao.memberSelect(article.getMemberId());
+				article.setWriterName(member.getNickname());
 			}
 		}
 

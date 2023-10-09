@@ -51,14 +51,16 @@
 			<div class="mt-2">
 				<button class="btn btn-accent btn-sm" onclick="history.back();">뒤로가기</button>
 				
-				<c:if test="${(article.memberId == rq.loginedMemberId) || rq.loginedMember.authLevel == 0} }">
-					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_modify&id=${article.id}&page=${page}">수정</a>
-					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_delete_pro&id=${article.id }&page=${page}" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a>
-				</c:if>
-				<c:if test="${(article.memberType == 2 && rq.loginedMemberId == 0) || rq.loginedMember.authLevel == 0}">
-					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_non&id=${article.id}&page=${page}&btnType=1">수정</a>
-					<a class="btn btn-accent btn-sm" href="/Article?cmd=article_non&id=${article.id}&page=${page}&btnType=2">삭제</a>
-				</c:if>
+				<c:choose>
+					<c:when test="${article.memberId == rq.loginedMemberId || rq.loginedMember.authLevel == 0}">
+						<a class="btn btn-accent btn-sm" href="/Article?cmd=article_modify&id=${article.id}&page=${page}">수정</a>
+						<a class="btn btn-accent btn-sm" href="/Article?cmd=article_delete_pro&id=${article.id }&page=${page}" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a>
+					</c:when>
+					<c:when test="${article.memberType == 2 && rq.loginedMemberId == 0}">
+						<a class="btn btn-accent btn-sm" href="/Article?cmd=article_non&id=${article.id}&page=${page}&btnType=1">수정</a>
+						<a class="btn btn-accent btn-sm" href="/Article?cmd=article_non&id=${article.id}&page=${page}&btnType=2">삭제</a>
+					</c:when>
+				</c:choose>
 			</div>
 		</div>
 	</section>
@@ -121,30 +123,34 @@
 				<div id="${status.count }" class="text-base py-4 pl-16 border-bottom-line">
 					<div class="flex justify-between items-end">
 						<div class="font-semibold"><span>${reply.writerName }</span></div>		
-						<c:if test="${reply.memberId == rq.loginedMemberId || rq.loginedMember.authLevel == 0}">
-							<div class="dropdown">
-							    <button class="btn btn-circle btn-ghost btn-sm mr-6">
-							    	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-							    </button>
-							    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-20">
-							        <li><a onclick="replyModify_getForm(${page }, ${reply.id }, ${status.count });">수정</a></li>
-							        <li><a href="/Reply?cmd=reply_delete_pro&id=${reply.id }&page=${page }" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a></li>
-						        </ul>
-						  	</div>
-					  	</c:if>
-					  	<c:if test="${(article.memberType == 2 && rq.loginedMemberId == 0) || rq.loginedMember.authLevel == 0}">
-							<button class="btn btn-square" id="showPasswordButton">
-							  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-							</button>
-							<form id="passwordInputContainer" action="/Reply?cmd=reply_delete_non_pro" method="post" style="display: none;">
-								<input type="hidden" name="page" value="${page}"/>
-								<input type="hidden" name="id" value="${reply.id }"/>
-						        <div>
-						        	<input class="input input-bordered input-accent w-3/4" type="password" id="passwordInput" placeholder="비밀번호를 입력하세요">
-						        	<button class="btn btn-accent btn-sm" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</button>
-						        </div>
-						    </form>
-					  	</c:if>
+						<c:choose>
+							<c:when test="${reply.memberId == rq.loginedMemberId || rq.loginedMember.authLevel == 0}">
+								<div class="dropdown">
+								    <button class="btn btn-circle btn-ghost btn-sm mr-6">
+								    	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
+								    </button>
+								    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-20">
+								        <c:if test="${reply.memberType == 1}">
+								        	<li><a onclick="replyModify_getForm(${page }, ${reply.id }, ${status.count });">수정</a></li>
+								        </c:if>
+								        <li><a href="/Reply?cmd=reply_delete_pro&id=${reply.id }&page=${page }" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a></li>
+							        </ul>
+							  	</div>
+					  		</c:when>
+					  		<c:when test="${(reply.memberType == 2 && rq.loginedMemberId == 0) || rq.loginedMember.authLevel == 0}">
+								<button class="btn btn-square" id="showPasswordButton">
+								  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+								</button>
+								<form id="passwordInputContainer" action="/Reply?cmd=reply_delete_non_pro" method="post" style="display: none;">
+									<input type="hidden" name="page" value="${page}"/>
+									<input type="hidden" name="id" value="${reply.id }"/>
+							        <div>
+							        	<input class="input input-bordered input-accent w-3/4" name="pass" type="password" id="passwordInput" placeholder="비밀번호를 입력하세요">
+							        	<button class="btn btn-accent btn-sm" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</button>
+							        </div>
+							    </form>
+						  	</c:when>
+						</c:choose>
 					</div>
 					
 					<script>

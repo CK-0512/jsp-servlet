@@ -54,5 +54,5 @@ function submitForm_blog(form){
 		</div>
 		<%@ include file="../common/sidebar.jsp" %>
 	</section>
-	
+
 <%@ include file="../common/foot.jsp" %>
