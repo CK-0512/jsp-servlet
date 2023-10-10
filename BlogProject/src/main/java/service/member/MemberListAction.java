@@ -19,7 +19,7 @@ public class MemberListAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberDAO dao = MemberDAO.getInstance();
 
-		String search = "", key = "", url = "member_list.jsp";
+		String search = "", key = "", url = "Member?cmd=member_list.do";
 		int totcount = 0;// 게시글 총수
 		// 검색 판단
 		if (request.getParameter("key") != null) {

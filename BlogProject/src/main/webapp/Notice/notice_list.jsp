@@ -18,7 +18,7 @@
 					<c:if test="${notice.type == 1}">
 						<a href="/Notice?cmd=notice_view&id=${notice.id}" class="text-lg">새 질문글이 작성되었습니다.</a>
 					</c:if>
-					<span>등록일 : ${notice.regDate }</span>
+					<span>발신일 : ${notice.regDate }</span>
 				</div>
 			</c:if>
 			<c:if test="${notice.checkStatus == 1}">

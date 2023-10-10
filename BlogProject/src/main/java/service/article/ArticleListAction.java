@@ -22,7 +22,7 @@ public class ArticleListAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArticleDAO dao = ArticleDAO.getInstance();
-		String search = "", key = "", url = "article_list.jsp";
+		String search = "", key = "", url = "Article?cmd=article_list";
 		int boardId = Integer.parseInt(request.getParameter("boardId"));
 		String boardName = "";
 		switch (boardId) {

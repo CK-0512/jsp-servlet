@@ -21,7 +21,7 @@ public class NoticeListAction implements Action {
 		Rq rq = new Rq(request, response);
 		NoticeDAO dao = NoticeDAO.getInstance();
 
-		String url = "notice_list.jsp";
+		String url = "Notice?cmd=notice_list";
 		int totcount = 0;// 게시글 총수
 		totcount = dao.noticeCount(rq.getLoginedMemberId());
 

@@ -23,7 +23,7 @@ public class ArticleListAllAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArticleDAO dao = ArticleDAO.getInstance();
 
-		String search = "", key = "", url = "index.jsp";
+		String search = "", key = "", url = "Article?cmd=article_list_all";
 		int totcount = 0;// 게시글 총수
 		// 검색 판단
 		if (request.getParameter("key") != null) {

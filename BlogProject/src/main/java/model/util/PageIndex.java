@@ -15,7 +15,7 @@ public class PageIndex {
 
 	  	// Prev 표시 부분
 	  	if(idx_pre > 0) {
-	  		s_pre = "<a href='"+url+"?page="+(idx_pre*10)+addtag+"'>"
+	  		s_pre = "<a href='"+url+"&page="+(idx_pre*10)+addtag+"'>"
 	  				+ "<img src=./img/i_prev.gif width=30 height=7></a>";
 	  	} else {
 	  		s_pre = "<img src=./img/i_prev.gif width=30 height=7> ";
@@ -27,13 +27,13 @@ public class PageIndex {
 	  		if(idx_start == page)
 	  			s_idx = s_idx + " "+idx_start+" ";
 	  		else {
-	  			s_idx = s_idx + " <a href='" + url + "?page=" + idx_start;
+	  			s_idx = s_idx + " <a href='" + url + "&page=" + idx_start;
 	  			s_idx = s_idx + addtag + "'> " + idx_start + " </a> ";
 	  		}
 	  	}
 		// Next 표시부분
 	  	if(idx_start <= totpage ) {
-	  		s_next = "<a href='"+url+"?page="+idx_start+addtag+"'>"
+	  		s_next = "<a href='"+url+"&page="+idx_start+addtag+"'>"
 	  				+ "<img src=./img/i_next.gif width=30 height=7></a>";
 	  	} else {
 	  		s_next = " <img src=./img/i_next.gif width=30 height=7>";
@@ -55,7 +55,7 @@ public class PageIndex {
 
 	  	// Prev 표시 부분
 	  	if(idx_pre > 0) {
-	  		s_pre = "<a href='"+url+"?boardId="+boardId+"&page="+(idx_pre*10)+addtag+"'>"
+	  		s_pre = "<a href='"+url+"&boardId="+boardId+"&page="+(idx_pre*10)+addtag+"'>"
 	  				+ "<img src=./img/i_prev.gif width=30 height=7></a>";
 	  	} else {
 	  		s_pre = "<img src=./img/i_prev.gif width=30 height=7> ";
@@ -67,13 +67,13 @@ public class PageIndex {
 	  		if(idx_start == page)
 	  			s_idx = s_idx + " "+idx_start+" ";
 	  		else {
-	  			s_idx = s_idx + " <a href='" + url + "?boardId="+boardId+"&page=" + idx_start;
+	  			s_idx = s_idx + " <a href='" + url + "&boardId="+boardId+"&page=" + idx_start;
 	  			s_idx = s_idx + addtag + "'> " + idx_start + " </a> ";
 	  		}
 	  	}
 		// Next 표시부분
 	  	if(idx_start <= totpage ) {
-	  		s_next = "<a href='"+url+"?boardId="+boardId+"&page="+idx_start+addtag+"'>"
+	  		s_next = "<a href='"+url+"&boardId="+boardId+"&page="+idx_start+addtag+"'>"
 	  				+ "<img src=./img/i_next.gif width=30 height=7></a>";
 	  	} else {
 	  		s_next = " <img src=./img/i_next.gif width=30 height=7>";
@@ -95,7 +95,7 @@ public class PageIndex {
 
 	  	// Prev 표시 부분
 	  	if(idx_pre > 0) {
-	  		s_pre = "<a href='"+url+"?page="+(idx_pre*10)+"&search="+query+"&key="+ URLEncoder.encode(key)+"'>"
+	  		s_pre = "<a href='"+url+"&page="+(idx_pre*10)+"&search="+query+"&key="+ URLEncoder.encode(key)+"'>"
 	  				+ "<img src=Board/img/i_prev.gif width=30 height=7></a>";
 	  	} else {
 	  		s_pre = "<img src=Board/img/i_prev.gif width=30 height=7> ";
@@ -107,13 +107,13 @@ public class PageIndex {
 	  		if(idx_start == page)
 	  			s_idx = s_idx + " "+idx_start+" ";
 	  		else {
-	  			s_idx = s_idx + " <a href='" + url + "?page=" + idx_start;
+	  			s_idx = s_idx + " <a href='" + url + "&page=" + idx_start;
 	  			s_idx = s_idx + "&search="+query+"&key=" + URLEncoder.encode(key) + "'> " + idx_start + " </a> ";
 	  		}
 	  	}
 		// Next 표시부분
 	  	if(idx_start <= totpage ) {
-	  		s_next = "<a href='"+url+"?page="+idx_start+ "&search="+query+"&key="+ URLEncoder.encode(key)+"'>"
+	  		s_next = "<a href='"+url+"&page="+idx_start+ "&search="+query+"&key="+ URLEncoder.encode(key)+"'>"
 	  				+ "<img src=Board/img/i_next.gif width=30 height=7></a>";
 	  	} else {
 	  		s_next = " <img src=Board/img/i_next.gif width=30 height=7>";
@@ -136,7 +136,7 @@ public class PageIndex {
 
 	  	// Prev 표시 부분
 	  	if(idx_pre > 0) {
-	  		s_pre = "<a href='"+url+"?boardId="+boardId+"&page="+(idx_pre*10)+"&search="+query+"&key="+ URLEncoder.encode(key)+"'>"
+	  		s_pre = "<a href='"+url+"&boardId="+boardId+"&page="+(idx_pre*10)+"&search="+query+"&key="+ URLEncoder.encode(key)+"'>"
 	  				+ "<img src=Board/img/i_prev.gif width=30 height=7></a>";
 	  	} else {
 	  		s_pre = "<img src=Board/img/i_prev.gif width=30 height=7> ";
@@ -148,13 +148,13 @@ public class PageIndex {
 	  		if(idx_start == page)
 	  			s_idx = s_idx + " "+idx_start+" ";
 	  		else {
-	  			s_idx = s_idx + " <a href='" + url + "?boardId="+boardId+"&page=" + idx_start;
+	  			s_idx = s_idx + " <a href='" + url + "&boardId="+boardId+"&page=" + idx_start;
 	  			s_idx = s_idx + "&search="+query+"&key=" + URLEncoder.encode(key) + "'> " + idx_start + " </a> ";
 	  		}
 	  	}
 		// Next 표시부분
 	  	if(idx_start <= totpage ) {
-	  		s_next = "<a href='"+url+"?boardId="+boardId+"&page="+idx_start+ "&search="+query+"&key="+ URLEncoder.encode(key)+"'>"
+	  		s_next = "<a href='"+url+"&boardId="+boardId+"&page="+idx_start+ "&search="+query+"&key="+ URLEncoder.encode(key)+"'>"
 	  				+ "<img src=Board/img/i_next.gif width=30 height=7></a>";
 	  	} else {
 	  		s_next = " <img src=Board/img/i_next.gif width=30 height=7>";
